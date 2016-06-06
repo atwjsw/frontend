@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>微专业前端开发作业</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="网易前端开发工程师微专业作业">
+    <style type="text/css">
+    	.g-doc {width:1616px;}
+
+    	/*提醒通知条*/
+    	.m-notice {width:100%;height:36px;background-color:#f3f3f3; /*line-height: 36px; */font:12px/36px "微软雅黑";}
+    	.m-notice p.text{display:inline-block; margin-left: 206px; }
+        .m-notice a{display:inline-block; margin-left: 5px; color: #21a557;}
+        .m-notice p.noremind{display:inline-block; margin-left: 670px;}
+    	
+        /*顶栏1 */
+    	.m-top1 {width:100%;height:89px;line-height:89px;}
+    	.m-top1 div.edu{display:inline-block;  margin-left: 206px; font: bold 28px "Gill Sans MT"; color:#39a030;vertical-align: middle;}
+        .m-top1 div.netease{display:inline-block; margin-left: 5px; font: 22px "微软雅黑"; vertical-align: middle;}   
+        .m-top1 div.attention{display:inline-block; width: 54px; height:21px; margin-left: 30px; font: 12px/21px "微软雅黑"; vertical-align: middle; color:white; background-color: #21a557; text-align: center;}   
+        .m-top1 div.fans{display:inline-block; width: 54px; height:21px; margin-left: 10px; font: 12px/21px "微软雅黑"; vertical-align: middle; text-align: center;}  
+        .m-top1 div.m-navbar1 {display:inline-block; margin-left:420px; font:16px "微软雅黑";}
+        .m-top1 li{display:inline-block; margin-right: 55px;}
+        .m-top1 a:hover{color:#39a030;}
+
+        /*轮播图*/
+        .m-slide{position:relative;width:100%;height:460px;overflow:hidden;}          
+        
+        /*顶栏2*/
+        /* 左侧Logo区 */
+    	.m-top2 {width:100%;height:295px;text-align: center;  }
+        .m-top2 li{display:inline-block; margin-top:60px; width: 338px; height:100%;} 
+        .m-top2 li+li{margin-left:85px;}   
+        .m-top2 div.circle{float:left;width:80px;height:80px; border-radius:50%;background-color:#39a030;margin-top: 5px; overflow:hidden;background-color:#39a030;}
+      /*   .m-top2 .logo{width:40px;height:40px;background:url(icon.png) no-repeat 10px 0;} */ 
+
+        /* 右侧文本区 */
+        .m-top2 .txt{float:left; margin-left: 20px; width:238px; text-align: left; overflow:hidden;}
+        .m-top2 h3{overflow:hidden;font-size:21px;margin-bottom: 10px;}
+        .m-top2 p{width:240px; height:96px; overflow:hidden; font-size:14px; line-height: 24px; margin-bottom: 35px; color: #666;}
+        .m-top2 a{color:#39a030;}
+        .m-top2 a:hover{text-decoration: underline;}
+        
+        /*工作环境图片区*/
+        .workenv {border-top:1px solid #f8f8f8;}
+        
+        /*主内容区*/
+        .m-body {position: relative; width:100%;height:1550px;background-color:#f8f8f8;}
+
+        /*主内容区-tab*/
+        .m-body .m-tab {position: absolute; top:81px; left: 205px; background-color: white; border-bottom:1px solid #d4d3d3; border-left:1px solid #ecebeb; border-right:1px solid #ecebeb; /*border-bottom:1px solid #ecebeb;*/}
+        .m-body .m-tab ul{font-size: 0;}
+        .m-body .m-tab li{display:inline-block; width:200px; height:50px; color:white; text-align: center; font:20px/50px "微软雅黑"; color:#666;}  
+        .m-body .m-tab li.z-crt{background-color:#39a030; font:20px/50px "微软雅黑";}  
+        .m-body .m-tab li.z-crt a{color:white;}  
+        
+        /*主内容区-课程列表*/
+        .m-body .m-list {position:absolute; top:161px; left: 205px; width: 980px;}
+        .m-body .m-list li{
+            float:left;
+            width:225px;
+            height:228px;
+            /* 列表间距和分割线 */
+           /* padding:19px 0 0;*/
+            margin:0 18px 19px 0;
+            border-right:1px solid #e7e7e7;
+            border-bottom:1px solid #e7e7e7;
+            border-left:1px solid #e7e7e7;
+            background-color: white;
+        }
+        .m-body .m-list p{font:12px "微软雅黑"; overflow: hidden; text-overflow:ellipsis;white-space:nowrap; margin:8px 10px 8px 5px;}
+        .m-body .m-list p.title{color:#333;}
+        .m-body .m-list p.author{color:#b6b6b6;}                                
+        .m-body .m-list p.fans{ position:relative; padding-left:18px; width:20px;height:16px;border:1px solid #ddd; border-radius:2px; font-size:8px; line-height: 16px; color:#999;}
+        .m-body .m-list p.price{color:#ff3f00;}
+        .m-body .m-list p.fans:before{
+                content:'';
+                position:absolute;
+                top:2px;
+                left:3px;
+                width:12px;
+                height:12px;
+                background:url(icon.png) no-repeat 0 0;
+        }
+        
+        /*主内容区- 分页器*/
+         .m-body .m-page {position: absolute; width:302px; height:20px; bottom:120px;right:450px;line-height: 20px;text-align: center;}
+         .m-page a{display:inline-block;/*vertical-align:top;*/width:20px; height:20px; font-size:14px/20px "微软雅黑";transition:background-color 0.3s;}
+         .m-page a+a{margin-left: 6px;}
+         .m-page a.z-crt{background-color:#9dd8b1;color:white;}
+         .m-page a.prev, a.next{background-color:#9dd8b1;color:white;width:30px; height:20px;}
+         .m-page a:hover{color:#39a030;}
+       
+        /*主内容区- 机构介绍*/
+        .m-body .m-introduction {position: absolute; width:223px; height:230px; top:84px; right: 205px; border:1px solid #ecebeb; /*padding:20px; box-sizing: border-box;*/}
+        .m-body .m-introduction .title{font:16px/66px "微软雅黑"; border-bottom:1px solid #ecebeb; text-indent: 20px;}
+        .m-body .m-introduction .video{font:16px/30px "微软雅黑"; margin-left: 20px; }
+        /*.m-body .m-introduction div.video{top:50%;left:50%;background:url(icon.png) no-repeat 0 0;}*/
+
+        /*主内容区 -最热排行*/
+        .m-body .m-hotlist {position: absolute; width:223px; height:778px; top:334px; right: 205px; border:1px solid #ecebeb; }
+        .m-body .m-hotlist .title{font:16px/66px "微软雅黑"; border-bottom:1px solid #ecebeb; text-indent: 20px;}
+        .m-body .m-hotlist li{width:100%;height:50px;margin:20px 0;}
+
+           .m-body .m-hotlist img{
+                float:left;
+               /* width:120px;
+                height:120px;*/
+                margin-left: 20px;
+                overflow:hidden;
+            }  
+
+            /* 右侧文本区 */
+            .m-body .m-hotlist .txt{
+                float:left;
+                margin-left: 12px;
+                width:120px;               
+            }
+
+            /* 标题 */
+            .m-body .m-hotlist h3{
+                /* 一行高度 */
+                height:26px;
+                overflow: hidden;text-overflow:ellipsis;white-space:nowrap; 
+                font:14px "微软雅黑";
+                color:#333;               
+            }
+
+            .m-body .m-hotlist .info{
+                position:relative;
+                /* 左侧留出空间放图标 */
+                padding-left:20px;
+                line-height:12px;
+                font:10px "微软雅黑";
+                overflow:hidden;
+            }
+
+            /* 关注图标 */
+            .m-body .m-hotlist .info:before{
+                content:'';
+                position:absolute;
+                top:2px;
+                left:0;
+                width:11px;
+                height:11px;
+                background:url(icon.png) no-repeat 0 0;
+            }
+
+         .m-bottom {width:100%;height:262px;background-color:#2c3339}   
+
+    </style>
+</head>
+
+<body>
+	<div class="g-doc">
+    <!-- 提醒通知条 -->
+    <div class="m-notice">
+        <p class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</p>
+        <a href="#">立即查看&gt;</a>
+        <p class="noremind">X 不再提醒</p>
+    </div>
+    <!-- /提醒通知条 -->
+    
+    <!-- 顶栏1 -->
+    <div class="m-top1">
+        <div class="edu">EDU</div>
+        <div class="netease">| 网易教育产品部</div>
+        <div class="attention"><em>+</em> 关注</div>
+        <div class="fans">粉丝 45</div>
+        <div class="m-navbar1">
+            <ul>
+                <li>
+                    <a href="">网易公开课</a>
+                </li>
+                <li>
+                    <a href="">云课堂</a>
+                </li>
+                <li>
+                    <a href="">中国大学MOOC</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /顶栏1  -->
+    
+    <!-- 轮播图 -->
+    <div class="m-slide">
+       <!--  <a href=""><img src="banner1.jpg" alt="banner"></a> -->
+        <ul class="m-cursor">
+        <!--   <li class='prev'><</li> -->
+          <li class='cursor'></li>
+          <li class='cursor'></li>
+          <li class='cursor'></li>
+          <!-- <li class='cursor'>4</li>
+          <li class='cursor'>5</li>
+          <li class='cursor'>6</li> -->
+         <!--  <li class='next'>></li> -->
+        </ul>
+    </div>
+    <!-- /轮播图 -->
+
+	 <!-- 顶栏2 -->
+    <div class="m-top2">
+        <ul>
+        <li>
+    		<!-- <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a> -->
+            <div class="circle"></div>
+            <div class="txt">
+                <h3>网易公开课</h3>
+                <p>推出国内外名校课程推出国内外名校课程。推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程</p>
+                <a href="#">了解更多 ></a>
+            </div>
+    	</li>
+    	<li>
+            <!-- <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a> -->
+            <div class="circle"><div class="logo"></div></div>
+            <div class="txt">
+                <h3>网易公开课</h3>
+                <p>推出国内外名校课程推出国内外名校课程。推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程</p>
+                <a href="#">了解更多 ></a>
+            </div>
+        </li>
+    	<li>
+            <!-- <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a> -->
+            <div class="circle"></div>
+            <div class="txt">
+                <h3>网易公开课</h3>
+                <p>推出国内外名校课程推出国内外名校课程。推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程推出国内外名校课程</p>
+                <a href="#">了解更多 ></a>
+            </div>
+        </li>
+        </ul>           
+    </div>
+    <!-- /顶栏2 -->
+
+    <!-- 工作环境图片区 -->
+    <div class="workenv">
+        <img src="imgs/workenv.jpg" width="1616px" height="220px">
+    </div>
+     <!-- /工作环境图片区 -->
+
+	 <!-- 主内容区 -->
+    <div class="m-body">
+        
+        <!-- Tab切换 -->
+    	<div class="m-tab">
+            <ul>
+                <li class="z-crt"><a href="">产品设计</a></li>
+                <li><a href="">编程语言</a></li>
+           </ul>
+        </div>
+        <!-- /Tab切换 -->
+
+        <!-- 课程列表 -->
+        <div class="m-list">
+            <ul>
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+           <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>       
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>             
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+           <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>      
+           <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+           <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>       
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>             
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+           <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>                    
+        </ul>
+    </div>
+    <!-- /课程列表 -->
+
+    <!-- 翻页器 -->
+    <div class="m-page">
+              <!-- <a class="btn s" href="#">首页</a> -->
+              <a class="prev" href="#"><</a>
+              <a class="pgi" href="#">1</a>
+              <a class="pgi z-crt" href="#">2</a>
+              <a class="pgi" href="#">3</a>
+              <a class="pgi" href="#">4</a>
+              <a class="pgi" href="#">5</a>
+              <a class="pgi" href="#">6</a>
+              <a class="pgi" href="#">7</a>
+              <a class="pgi" href="#">8</a>
+              <a class="next" href="#">></a>
+              <!-- <a class="btn e" href="#">尾页</a> -->
+    </div>
+
+    
+        <!-- 机构介绍 -->
+        <div class="m-introduction">
+            <div class="title">机构介绍</div>
+            <div class="video">
+                <p>观看下面的视频了解吧:</p>
+                <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" width="180px" height="110px">
+                    <source src="movie.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                </video>
+            </div>
+        </div>
+        <!-- /机构介绍 -->
+
+        <!-- 热门推荐 -->
+        <div class="m-hotlist">
+            <div class="title">最热排行</div>
+            <ul>
+                <li>
+                    <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
+                    <div class="txt">
+                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
+                        <div class="info">
+                            <i class="vip"></i>
+                            <p>21576</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- /热门推荐 -->        
+    </div>
+  	 <!-- /主内容区 -->
+
+	 <!-- 底栏(TBD) -->
+    <div class="m-bottom">    	
+
+    </div>
+	 <!-- 底栏 -->
+  
+    </div>
+     <script src='js/util.js'></script>
+    <script src='js/slider.js'></script>
+<script>
+
+
+var $ = function( selector ){
+  return [].slice.call(document.querySelectorAll(selector))
+}
+
+var cursors = $('.m-cursor .cursor');
+// var prev = $('.m-cursor .prev')[0];
+// var next = $('.m-cursor .next')[0];
+
+cursors.forEach(function(cursor, index){
+  cursor.addEventListener('click', function(){
+    slider.nav(index);
+  })
+})
+
+// prev.addEventListener('click', function(){
+//   slider.prev()
+// })
+// next.addEventListener('click', function(){
+//   slider.next()
+// })
+
+
+var slider = new Slider({
+  //视口容器
+  container: document.getElementsByClassName("m-slide")[0],
+  // 图片列表
+  images: [
+    "./imgs/banner1.jpg",
+    "./imgs/banner2.jpg",
+    "./imgs/banner3.jpg"
+    // "./imgs/pic04.jpg",
+    // "./imgs/pic05.jpg",
+    // "./imgs/pic06.jpg"
+  ],
+
+  // 是否允许拖拽
+  drag: true
+});
+
+// 通过监听`nav`事件来完成额外逻辑
+// --------------
+slider.on('nav', function( ev ){
+
+  var pageIndex = ev.pageIndex;
+
+  cursors.forEach(function(cursor, index){
+
+    if(index === pageIndex ){
+
+      cursor.className = 'z-active';
+
+    }else{
+
+      cursor.className = '';
+    }
+  })
+
+})
+
+// 3s 自动轮播
+setInterval(function(){
+  
+  // 下一页
+  slider.next();
+
+},5000)
+
+// 直接跳到第二页
+slider.nav(0);
+</script>
+</body>
+
+</html>
