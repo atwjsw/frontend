@@ -11,10 +11,31 @@
     <style type="text/css">
     	.g-doc {width:1616px;}
 
+        /*登录框*/
+        /*body, button, input, legend{margin: 0;padding: 0;font: 16px "微软雅黑";} */
+      /*  .m-form{position:fixed; top:50%; left:50%;transform:translateY(-50%);transform: translateX(-50%);}  */
+        .m-form{position:fixed; margin:auto; left:0; top:0; right:0; bottom:0; display:none;}    
+        .m-form{/*margin: 150px auto;*/width: 387px; height: 289px; background-color:white;z-index:999;}
+        .m-form legend {margin-left: 40px; margin-top:30px; margin-bottom: 5px; font:bold 18px "微软雅黑"; color:#444;}
+        .m-form .u-txt {margin-left: 40px; margin-top:15px;width:282px; height:44px; font:16px "微软雅黑"; border:1px solid #dfdfdf; line-height: 44px; box-shadow: 2px 2px 2px #f1f1f1 inset; padding-left: 11px;} /*border:1px solid #f1f1f1;*/
+        /*.m-form fieldset{border: none;padding: 20px;}*/
+      /*  .m-form div{margin: 40px;}*/
+        .m-form button{width: 293px;height: 46px; margin-left: 40px; margin-top:29px; color:#fff;cursor:pointer;background-color: #189f36;font:bold 16px "微软雅黑"; box-shadow:2px 2px #d5e3da; border:none;}
+        .m-form .msg{margin-left:40px; margin-bottom:-15px;display:none;font:14px "微软雅黑";}
+        .m-form .tip{padding-left:6em;font-size:12px;color:#C0C0C0;}
+        .m-form .j-err{display:block;color:#FF0000;}
+        .m-form .j-suc{display:block;color:#158226;}
+        /*.m-form .u-txt{width: 160px;padding: 3px;border:1px solid #aaa;}*/
+        .m-form .j-error{border-color: #f00;background-color: #FFE7E7;}
+        .m-form .j-disabled{cursor: default;background-color: #ddd;}
+        
+        /*遮罩*/
+        .mask{position:fixed;top:0;left:0;z-index:998;width:100%;height:100%;background-color:#000;opacity:0.7; display:none;} 
+
     	/*提醒通知条*/
     	.g-notice {width:100%;height:36px;background-color:#f3f3f3; font:12px/36px "微软雅黑";}
-    	.g-notice p{display:inline-block; margin-left: 206px; }
-        .g-notice a.check{display:inline-block; margin-left: 5px; color: #21a557;}
+    	.g-notice p{display:inline-block; margin-left:206px;}
+        .g-notice a.check{display:inline-block; margin-left: 5px;color: #21a557;}
         .g-notice a.noremind{display:inline-block; margin-left: 670px;}
     	
         /*顶栏1 */
@@ -165,20 +186,7 @@
         .m-bottom .title{font:12px/30px "微软雅黑";color:#bebfc0;}
         .m-bottom a{font:15px/30px "微软雅黑";color:#bebfc0;}
 
-        /*登录框*/
-        body, button, input, legend{margin: 0;padding: 0;font: 16px "微软雅黑";}        
-        .m-form{margin: 150px auto;width: 325px;border: 1px solid #ddd;}
-        .m-form legend{width: 100%;line-height: 30px;text-indent: 1em;color: #fff;background-color: #2d2d2d;}
-        .m-form fieldset{border: none;padding: 20px;}
-        .m-form div{margin: 20px;}
-        .m-form button{width: 100%;height: 30px;color: #fff;border: 1px solid #ddd;cursor: pointer;background-color: #2d7dca;}
-        .m-form .msg{margin:5px;text-align:center;display:none;}
-        .m-form .tip{padding-left:6em;font-size:12px;color:#C0C0C0;}
-        .m-form .j-err{display:block;color:#FF0000;}
-        .m-form .j-suc{display:block;color:#158226;}
-        .m-form .u-txt{width: 160px;padding: 3px;border:1px solid #aaa;}
-        .m-form .j-error{border-color: #f00;background-color: #FFE7E7;}
-        .m-form .j-disabled{cursor: default;background-color: #ddd;}
+        
 
 
     </style>
@@ -595,35 +603,39 @@
 	 <!-- 底栏 -->
     
     <!-- 登录框 -->
-    <div class="login">
-        <form action="./login" class="m-form" name="loginForm" target="result" autocomplete="off">
-          <legend>手机号码登录</legend>
+   <!--  <div class="login"> -->
+        <form action="/login" class="m-form" name="loginForm" autocomplete="off">
+        <!-- target="result"  -->
+          <legend>登录网易云课堂</legend>
           <fieldset>
             <div class="msg" id="message"></div>
             <div>
-              <label for="telephone">手机号：</label>
-              <input id="telephone" name="telephone" type="tel" class="u-txt" maxlength="11" 
-                     required pattern="^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$"><br/>
-              <span class="tip">11位数字手机号码</span>
+             <!--  <label for="telephone">手机号：</label> -->
+              <input id="userName" name="userName" type="text" class="u-txt" maxlength="30" placeholder="账号"
+                     required>
+             <!--  <span class="tip">11位数字手机号码</span> -->
             </div>
             <div>
-              <label for="password">密　码：</label>
-              <input id="password" name="password" type="password" class="u-txt"><br/>
-              <span class="tip">至少6位，同时包含数字和字母</span>
+             <!--  <label for="password">密　码：</label> -->
+              <input id="password" name="password" type="password" class="u-txt" placeholder="密码" required>
+              <!-- <span class="tip">至少6位，同时包含数字和字母</span> -->
             </div>
-            <div><button name="loginBtn">登　录</button></div>
+            <div><button name="loginBtn">登 录</button></div>
           </fieldset>
         </form>
-        <iframe name="result" id="result" style="display:none;"></iframe>       
-    </div>
+    <!--     <iframe name="result" id="result" style="display:none;"></iframe> -->       
+   <!--  </div> -->
 
-  
+    <div class="mask"></div>
   
     </div>
      <script src='js/util.js'></script>
-    <script src='js/slider.js'></script>
+     <script src='js/slider.js'></script>
+     <script src='js/md5.js'></script>
+     <script src='js/login.js'></script>
 <script>
 
+   
     var $ = function( selector ){
       return [].slice.call(document.querySelectorAll(selector))
     }
@@ -661,14 +673,16 @@
 
     //2. 关注按钮交互
      $('.g-top1 a.attention')[0].addEventListener("click", function(){
-        if(!getCookie("loginSuc")){
+        // if(!getCookie("loginSuc")){
             alert("Do login");
             setCookie("loginSuc","true",30); 
             //attendion.style.display="none";
-            //attnDone.style.display="block";               
-        } else {
-             alert("already login");
-        }; 
+            //attnDone.style.display="block"; 
+            $('.m-form')[0].style.display="block"; 
+            $('.mask')[0].style.display="block";         
+        // } else {
+        //      alert("already login");
+        // }; 
     });
 
 
