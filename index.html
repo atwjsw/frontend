@@ -12,20 +12,22 @@
     	.g-doc {width:1616px;}
 
     	/*提醒通知条*/
-    	.m-notice {width:100%;height:36px;background-color:#f3f3f3; /*line-height: 36px; */font:12px/36px "微软雅黑";}
-    	.m-notice p.text{display:inline-block; margin-left: 206px; }
-        .m-notice a{display:inline-block; margin-left: 5px; color: #21a557;}
-        .m-notice p.noremind{display:inline-block; margin-left: 670px;}
+    	.g-notice {width:100%;height:36px;background-color:#f3f3f3; font:12px/36px "微软雅黑";}
+    	.g-notice p{display:inline-block; margin-left: 206px; }
+        .g-notice a.check{display:inline-block; margin-left: 5px; color: #21a557;}
+        .g-notice a.noremind{display:inline-block; margin-left: 670px;}
     	
         /*顶栏1 */
-    	.m-top1 {width:100%;height:89px;line-height:89px;}
-    	.m-top1 div.edu{display:inline-block;  margin-left: 206px; font: bold 28px "Gill Sans MT"; color:#39a030;vertical-align: middle;}
-        .m-top1 div.netease{display:inline-block; margin-left: 5px; font: 22px "微软雅黑"; vertical-align: middle;}   
-        .m-top1 div.attention{display:inline-block; width: 54px; height:21px; margin-left: 30px; font: 12px/21px "微软雅黑"; vertical-align: middle; color:white; background-color: #21a557; text-align: center;}   
-        .m-top1 div.fans{display:inline-block; width: 54px; height:21px; margin-left: 10px; font: 12px/21px "微软雅黑"; vertical-align: middle; text-align: center;}  
-        .m-top1 div.m-navbar1 {display:inline-block; margin-left:420px; font:16px "微软雅黑";}
-        .m-top1 li{display:inline-block; margin-right: 55px;}
-        .m-top1 a:hover{color:#39a030;}
+    	.g-top1 {width:100%;height:89px;line-height:89px;}
+       	.g-top1 .edu{display:inline-block;margin-left:200px;font:bold 28px "Gill Sans MT";color:#39a030;vertical-align:middle;}
+        .g-top1 .divider{display:inline-block;margin-left:10px;font:18px "微软雅黑";color:#39a030; vertical-align:middle;}
+        .g-top1 .netease{display:inline-block; margin-left:13px; font:22px "微软雅黑";color:#333; vertical-align:middle;}   
+        .g-top1 a.attention{display:inline-block;width:54px;height:21px;border-radius:2px; margin-left:30px; font:12px/21px "微软雅黑"; vertical-align: middle;color:white;background-color: #21a557;text-align:center;}
+        .g-top1 em{font-size:15px;}   
+        .g-top1 .fans{display:inline-block; width: 54px; height:21px; margin-left: 10px; font: 12px/21px "微软雅黑"; vertical-align: middle; text-align: center;}  
+        .g-top1 .m-navbar1 {display:inline-block; margin-left:420px; font:16px "微软雅黑";}
+        .g-top1 li{display:inline-block; margin-right: 55px;}
+        .g-top1 .m-navbar1 a:hover{color:#39a030;}
 
         /*轮播图*/
         .m-slide{position:relative;width:100%;height:460px;overflow:hidden;}          
@@ -163,6 +165,21 @@
         .m-bottom .title{font:12px/30px "微软雅黑";color:#bebfc0;}
         .m-bottom a{font:15px/30px "微软雅黑";color:#bebfc0;}
 
+        /*登录框*/
+        body, button, input, legend{margin: 0;padding: 0;font: 16px "微软雅黑";}        
+        .m-form{margin: 150px auto;width: 325px;border: 1px solid #ddd;}
+        .m-form legend{width: 100%;line-height: 30px;text-indent: 1em;color: #fff;background-color: #2d2d2d;}
+        .m-form fieldset{border: none;padding: 20px;}
+        .m-form div{margin: 20px;}
+        .m-form button{width: 100%;height: 30px;color: #fff;border: 1px solid #ddd;cursor: pointer;background-color: #2d7dca;}
+        .m-form .msg{margin:5px;text-align:center;display:none;}
+        .m-form .tip{padding-left:6em;font-size:12px;color:#C0C0C0;}
+        .m-form .j-err{display:block;color:#FF0000;}
+        .m-form .j-suc{display:block;color:#158226;}
+        .m-form .u-txt{width: 160px;padding: 3px;border:1px solid #aaa;}
+        .m-form .j-error{border-color: #f00;background-color: #FFE7E7;}
+        .m-form .j-disabled{cursor: default;background-color: #ddd;}
+
 
     </style>
 </head>
@@ -170,26 +187,27 @@
 <body>
 	<div class="g-doc">
     <!-- 提醒通知条 -->
-    <div class="m-notice">
+    <div class="g-notice">
         <p class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</p>
-        <a href="#">立即查看&gt;</a>
-        <p class="noremind">X 不再提醒</p>
+        <a class="check" href="#">立即查看></a>
+        <a class="noremind" href="#">X 不再提醒</a>      
     </div>
     <!-- /提醒通知条 -->
     
     <!-- 顶栏1 -->
-    <div class="m-top1">
-        <div class="edu">EDU |</div>
-        <div class="netease"> 网易教育产品部</div>
-        <div class="attention"><em>+</em> 关注</div>
-        <div class="fans">粉丝 45</div>
-        <div class="m-navbar1">
-            <ul>
-                <li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
-                <li><a href="http://study.163.com/" target="_blank">云课堂</a></li>
-                <li><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
-            </ul>
-        </div>
+    <div class="g-top1">
+            <p class="edu">EDU</p>
+            <p class="divider">|</p>
+            <p class="netease">网易教育产品部</p>
+            <a class="attention"><em>+</em> 关注</a>
+            <p class="fans">粉丝 45</p>
+            <div class="m-navbar1">
+                <ul>
+                    <li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
+                    <li><a href="http://study.163.com/" target="_blank">云课堂</a></li>
+                    <li><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
+                </ul>
+            </div>
     </div>
     <!-- /顶栏1  -->
     
@@ -575,16 +593,89 @@
         </div>      
     </div>
 	 <!-- 底栏 -->
+    
+    <!-- 登录框 -->
+    <div class="login">
+        <form action="./login" class="m-form" name="loginForm" target="result" autocomplete="off">
+          <legend>手机号码登录</legend>
+          <fieldset>
+            <div class="msg" id="message"></div>
+            <div>
+              <label for="telephone">手机号：</label>
+              <input id="telephone" name="telephone" type="tel" class="u-txt" maxlength="11" 
+                     required pattern="^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$"><br/>
+              <span class="tip">11位数字手机号码</span>
+            </div>
+            <div>
+              <label for="password">密　码：</label>
+              <input id="password" name="password" type="password" class="u-txt"><br/>
+              <span class="tip">至少6位，同时包含数字和字母</span>
+            </div>
+            <div><button name="loginBtn">登　录</button></div>
+          </fieldset>
+        </form>
+        <iframe name="result" id="result" style="display:none;"></iframe>       
+    </div>
+
+  
   
     </div>
      <script src='js/util.js'></script>
     <script src='js/slider.js'></script>
 <script>
 
+    var $ = function( selector ){
+      return [].slice.call(document.querySelectorAll(selector))
+    }
 
-var $ = function( selector ){
-  return [].slice.call(document.querySelectorAll(selector))
-}
+    //1. 通知条部分交互 - 通过Cookie实现不再提醒
+    function setCookie(name,value,iTime){  
+        var oDate = new Date();  
+        oDate.setDate(oDate.getDate()+iTime);  
+        document.cookie = name+'='+value+';expires='+oDate.toGMTString();  
+    }  
+    
+    function getCookie(name){  
+        var arr = document.cookie.split("; ");  
+        for(var i=0; i<arr.length; i++){  
+            if(arr[i].split("=")[0] == name){  
+                return arr[i].split("=")[1];  
+            }  
+        }  
+        return '';  
+    }  
+    function removeCookie(name){  
+        //调用setCookie方法，把时间设置为-1  
+        setCookie(name,1,-1);  
+    }  
+
+    if (getCookie("reminder")=="false") {
+         $('.g-notice')[0].style.display = "none";
+    }
+
+    $('.g-notice a.noremind')[0].addEventListener("click", function(){
+        setCookie("reminder", "false", 30);
+        $('.g-notice')[0].style.display = "none";
+        return false;  
+    });
+
+    //2. 关注按钮交互
+     $('.g-top1 a.attention')[0].addEventListener("click", function(){
+        if(!getCookie("loginSuc")){
+            alert("Do login");
+            setCookie("loginSuc","true",30); 
+            //attendion.style.display="none";
+            //attnDone.style.display="block";               
+        } else {
+             alert("already login");
+        }; 
+    });
+
+
+
+
+// 轮播图
+
 
 var cursors = $('.m-cursor .cursor');
 // var prev = $('.m-cursor .prev')[0];
