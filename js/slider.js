@@ -237,7 +237,74 @@
 
 })(util);
 
+// 轮播图
 
+
+var cursors = $('.m-cursor .cursor');
+// var prev = $('.m-cursor .prev')[0];
+// var next = $('.m-cursor .next')[0];
+
+cursors.forEach(function(cursor, index){
+  cursor.addEventListener('click', function(){
+    slider.nav(index);
+  })
+})
+
+// prev.addEventListener('click', function(){
+//   slider.prev()
+// })
+// next.addEventListener('click', function(){
+//   slider.next()
+// })
+
+
+var slider = new Slider({
+  //视口容器
+  container: document.getElementsByClassName("m-slide")[0],
+  // 图片列表
+  images: [
+    "./imgs/banner1.jpg",
+    "./imgs/banner2.jpg",
+    "./imgs/banner3.jpg"
+    // "./imgs/pic04.jpg",
+    // "./imgs/pic05.jpg",
+    // "./imgs/pic06.jpg"
+  ],
+
+  // 是否允许拖拽
+  drag: true
+});
+
+// 通过监听`nav`事件来完成额外逻辑
+// --------------
+slider.on('nav', function( ev ){
+
+  var pageIndex = ev.pageIndex;
+
+  cursors.forEach(function(cursor, index){
+
+    if(index === pageIndex ){
+
+      cursor.className = 'z-active';
+
+    }else{
+
+      cursor.className = '';
+    }
+  })
+
+})
+
+// 3s 自动轮播
+setInterval(function(){
+  
+  // 下一页
+  slider.next();
+
+},5000)
+
+// 直接跳到第二页
+slider.nav(0);
 
 
 

@@ -44,6 +44,10 @@
         .g-top1 .divider{display:inline-block;margin-left:10px;font:18px "微软雅黑";color:#39a030; vertical-align:middle;}
         .g-top1 .netease{display:inline-block; margin-left:13px; font:22px "微软雅黑";color:#333; vertical-align:middle;}   
         .g-top1 a.attention{display:inline-block;width:54px;height:21px;border-radius:2px; margin-left:30px; font:12px/21px "微软雅黑"; vertical-align: middle;color:white;background-color: #21a557;text-align:center;}
+        .g-top1 a.attention:hover{background-color:#2acd6d;}
+        .g-top1 .attnDone{display:none;width:108px;height:21px;border-radius:2px; border:1px solid #ccc; margin-left:30px; font:12px/21px "微软雅黑"; vertical-align: middle; background-color: #f3f3f3;text-align:center;}
+        .g-top1 .attnDone a{color:#ccc;}
+        .g-top1 .attnDone a:hover{color:#2acd6d; text-decoration:underline;}
         .g-top1 em{font-size:15px;}   
         .g-top1 .fans{display:inline-block; width: 54px; height:21px; margin-left: 10px; font: 12px/21px "微软雅黑"; vertical-align: middle; text-align: center;}  
         .g-top1 .m-navbar1 {display:inline-block; margin-left:420px; font:16px "微软雅黑";}
@@ -208,6 +212,7 @@
             <p class="divider">|</p>
             <p class="netease">网易教育产品部</p>
             <a class="attention"><em>+</em> 关注</a>
+            <div class="attnDone">/ 已关注 | <a>取消</a></div>
             <p class="fans">粉丝 45</p>
             <div class="m-navbar1">
                 <ul>
@@ -665,17 +670,23 @@
          $('.g-notice')[0].style.display = "none";
     }
 
-    $('.g-notice a.noremind')[0].addEventListener("click", function(){
-        setCookie("reminder", "false", 30);
-        $('.g-notice')[0].style.display = "none";
+    $('.g-top1 .attnDone a')[0].addEventListener("click", function(){
+         $('.g-top1 a.attention')[0].style.display="inline-block";
+         $('.g-top1 .attnDone')[0].style.display="none";  
+         removeCookie("loginSuc"); 
         return false;  
     });
 
     //2. 关注按钮交互
+    if (getCookie('loginSuc')=="true"){
+        $('.g-top1 a.attention')[0].style.display="none";
+        $('.g-top1 .attnDone')[0].style.display="inline-block"; 
+    }
+
      $('.g-top1 a.attention')[0].addEventListener("click", function(){
         // if(!getCookie("loginSuc")){
-            alert("Do login");
-            setCookie("loginSuc","true",30); 
+            // alert("Do login");
+            // setCookie("loginSuc","true",30); 
             //attendion.style.display="none";
             //attnDone.style.display="block"; 
             $('.m-form')[0].style.display="block"; 
@@ -685,7 +696,11 @@
         // }; 
     });
 
-
+    $('.g-notice a.noremind')[0].addEventListener("click", function(){
+        setCookie("reminder", "false", 30);
+        $('.g-notice')[0].style.display = "none";
+        return false;  
+    });
 
 
 // 轮播图
