@@ -81,9 +81,10 @@
         /*主内容区-tab*/
         .m-body .m-tab {position: absolute; top:81px; left: 205px; background-color: white; border-bottom:1px solid #d4d3d3; border-left:1px solid #ecebeb; border-right:1px solid #ecebeb; /*border-bottom:1px solid #ecebeb;*/}
         .m-body .m-tab ul{font-size: 0;}
-        .m-body .m-tab li{display:inline-block; width:200px; height:50px; color:white; text-align: center; font:20px/50px "微软雅黑"; color:#666;}  
+        .m-body .m-tab li{display:inline-block; width:200px; height:50px; text-align: center; font:20px/50px "微软雅黑"; color:#666;}  
         .m-body .m-tab li.z-crt{background-color:#39a030; font:20px/50px "微软雅黑";}  
         .m-body .m-tab li.z-crt a{color:white;}  
+
         
         /*主内容区-课程列表*/
         .m-body .m-list {position:absolute; top:161px; left: 205px; width: 980px;}
@@ -286,15 +287,27 @@
         <!-- Tab切换 -->
     	<div class="m-tab">
             <ul>
-                <li class="z-crt"><a href="">产品设计</a></li>
-                <li><a href="">编程语言</a></li>
+                <li class="product z-crt"><a href="">产品设计</a></li>
+                <li class="program"><a href="">编程语言</a></li>
            </ul>
         </div>
         <!-- /Tab切换 -->
 
         <!-- 课程列表 -->
         <div class="m-list">
-            <ul>
+        </div>
+          <!--   <ul>
+            <li>
+                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
+                <p class="author">音频帮</p>
+                <p class="fans">510</p>
+                <p class="price">￥800.00</p>
+            </li>     
+                
+            </ul> -->
+
+           <!--  <ul>
             <li>
                 <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
                 <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
@@ -436,7 +449,7 @@
                 <p class="price">￥800.00</p>
             </li>                    
         </ul>
-    </div>
+    </div> -->
     <!-- /课程列表 -->
 
     <!-- 翻页器 -->
@@ -638,140 +651,106 @@
      <script src='js/slider.js'></script>
      <script src='js/md5.js'></script>
      <script src='js/login.js'></script>
+     <script src='js/trimpath.js'></script>
 <script>
-
-   
-    var $ = function( selector ){
-      return [].slice.call(document.querySelectorAll(selector))
-    }
-
-    //1. 通知条部分交互 - 通过Cookie实现不再提醒
-    function setCookie(name,value,iTime){  
-        var oDate = new Date();  
-        oDate.setDate(oDate.getDate()+iTime);  
-        document.cookie = name+'='+value+';expires='+oDate.toGMTString();  
-    }  
     
-    function getCookie(name){  
-        var arr = document.cookie.split("; ");  
-        for(var i=0; i<arr.length; i++){  
-            if(arr[i].split("=")[0] == name){  
-                return arr[i].split("=")[1];  
-            }  
-        }  
-        return '';  
-    }  
-    function removeCookie(name){  
-        //调用setCookie方法，把时间设置为-1  
-        setCookie(name,1,-1);  
-    }  
-
-    if (getCookie("reminder")=="false") {
-         $('.g-notice')[0].style.display = "none";
-    }
-
-    $('.g-top1 .attnDone a')[0].addEventListener("click", function(){
-         $('.g-top1 a.attention')[0].style.display="inline-block";
-         $('.g-top1 .attnDone')[0].style.display="none";  
-         removeCookie("loginSuc"); 
-        return false;  
-    });
-
-    //2. 关注按钮交互
-    if (getCookie('loginSuc')=="true"){
-        $('.g-top1 a.attention')[0].style.display="none";
-        $('.g-top1 .attnDone')[0].style.display="inline-block"; 
-    }
-
-     $('.g-top1 a.attention')[0].addEventListener("click", function(){
-        // if(!getCookie("loginSuc")){
-            // alert("Do login");
-            // setCookie("loginSuc","true",30); 
-            //attendion.style.display="none";
-            //attnDone.style.display="block"; 
-            $('.m-form')[0].style.display="block"; 
-            $('.mask')[0].style.display="block";         
-        // } else {
-        //      alert("already login");
-        // }; 
-    });
-
-    $('.g-notice a.noremind')[0].addEventListener("click", function(){
-        setCookie("reminder", "false", 30);
-        $('.g-notice')[0].style.display = "none";
-        return false;  
-    });
-
-
-// 轮播图
-
-
-var cursors = $('.m-cursor .cursor');
-// var prev = $('.m-cursor .prev')[0];
-// var next = $('.m-cursor .next')[0];
-
-cursors.forEach(function(cursor, index){
-  cursor.addEventListener('click', function(){
-    slider.nav(index);
-  })
-})
-
-// prev.addEventListener('click', function(){
-//   slider.prev()
-// })
-// next.addEventListener('click', function(){
-//   slider.next()
-// })
-
-
-var slider = new Slider({
-  //视口容器
-  container: document.getElementsByClassName("m-slide")[0],
-  // 图片列表
-  images: [
-    "./imgs/banner1.jpg",
-    "./imgs/banner2.jpg",
-    "./imgs/banner3.jpg"
-    // "./imgs/pic04.jpg",
-    // "./imgs/pic05.jpg",
-    // "./imgs/pic06.jpg"
-  ],
-
-  // 是否允许拖拽
-  drag: true
-});
-
-// 通过监听`nav`事件来完成额外逻辑
-// --------------
-slider.on('nav', function( ev ){
-
-  var pageIndex = ev.pageIndex;
-
-  cursors.forEach(function(cursor, index){
-
-    if(index === pageIndex ){
-
-      cursor.className = 'z-active';
-
-    }else{
-
-      cursor.className = '';
-    }
-  })
-
-})
-
-// 3s 自动轮播
-setInterval(function(){
   
-  // 下一页
-  slider.next();
+  
 
-},5000)
-
-// 直接跳到第二页
-slider.nav(0);
 </script>
+
+ <script type="text/template" id="track-list">
+  
+         <ul>
+        {list tracks as track}
+          <li>
+                <a href=""><img src="${track.middlePhotoUrl}" width="223px" height="124px" alt="电台名称"></a>
+                <p class="title">${track.name}</p> 
+                <p class="author">${track.provider}</p>
+                <p class="fans">${track.learnerCount}</p>
+                <p class="price">￥${track.price}</p>
+            </li>           
+         {/list}
+         </ul>
+         </script>
+  
+    <script>
+        var parent = document.getElementsByClassName('m-list')[0];
+        var tplContent = TrimPath.parse(
+            document.getElementById('track-list').textContent
+        );
+    </script>
+    <script>
+        function render(parent,list){
+            // alert(list.totalCount);
+           
+            var config = {
+                dur2str:function(duration){
+                    duration = duration/1000;
+                    var m = Math.floor(duration/60),
+                        s = Math.floor(duration%60);
+                    return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+                }
+            };
+            var html = TrimPath.merge(
+                 tplContent,{tracks:list}, config
+               
+            );
+            parent.insertAdjacentHTML('afterBegin',html);
+        }
+
+        // 刷新页面
+        window.addEventListener("load", function() {
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1);
+            return false;
+        });
+
+
+        $('.m-tab .product')[0].addEventListener("click", function(event) {
+            event.preventDefault();            
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1); 
+            $('.m-tab .program')[0].style.backgroundColor="white";
+            $('.m-tab .program a')[0].style.color="#666" ; 
+            $('.m-tab .product')[0].style.backgroundColor="#39a030";
+            $('.m-tab .product a')[0].style.color="white";                  
+            return false;
+        });
+
+        $('.m-tab .program')[0].addEventListener("click", function(event) {
+            event.preventDefault();
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:20 }, callback1); 
+            $('.m-tab .program')[0].style.backgroundColor="#39a030";
+            $('.m-tab .program a')[0].style.color="white" ; 
+            $('.m-tab .product')[0].style.backgroundColor="white";
+            $('.m-tab .product a')[0].style.color="#666" ;               
+            return false;
+        });
+        
+         function callback1(data) {            
+            var arr = JSON.parse(data).list;
+            // alert ('callback1' + arr.length);
+                // var arr1 = arrayGroup(arr, 16, 2);
+            $('.m-list')[0].textContent="";            
+            render(parent, arr);             
+         }
+
+        // form.addEventListener(
+        //     'submit',
+        //     function(event) {
+        //         event.preventDefault();
+        //         get("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, callback);
+        //     });
+
+
+        //数组处理
+        function arrayGroup(arr, groupsize, groupId) {
+            console.log(arr.length);
+            console.log(groupsize*(groupId-1));
+            console.log(groupsize*groupId);
+            return arr.slice(groupsize*(groupId-1), groupsize*groupId);
+        }
+    </script>    
+
 </body>
 
 </html>

@@ -12,7 +12,7 @@ function get(url, options, callback) {
         }
     }
     var URL = url + "?" + serialize(options);
-    console.log(URL);
+    // alert(URL);
     xhr.open('get', URL, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(null);
@@ -164,7 +164,6 @@ form.addEventListener(
         disableSubmit(false);
     }
 );
-
 form.addEventListener(
     'submit',
     function(event) {
