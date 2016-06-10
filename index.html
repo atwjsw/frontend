@@ -114,17 +114,17 @@
         .m-body .m-list .hover{position:absolute; top:-11px;left:-11px;width:480px; height:238px; margin:0 18px 19px 0; border-right:1px solid #d0cfd0;border-bottom:1px solid #e7e7e7; border-left:1px solid #e7e7e7; background-color: white; display:none; z-index: 100; 
         }
         /* 浮层上部分*/
-        .m-body .m-list .hover .upper{width:100%;height:155px; /*padding:11px;*/}
+        .m-body .m-list .hover .upper{width:100%;height:155px;}
         .m-body .m-list .hover img{float:left;margin:11px 11px 0 11px;}   
         .m-body .m-list .hover .txt{float:left;margin-top:11px; margin-left:9px;}
-        .m-body .m-list .hover p.title{height:36px;font:18px "微软雅黑";}
+        .m-body .m-list .hover p.title{height:60px; width:200px;font:18px/22px "微软雅黑";overflow:hidden;/*text-overflow:ellipsis;*//*white-space:nowrap;*/}
         .m-body .m-list .hover p.info{position:relative;padding-left:16px;height:26px;font:12/20px "微软雅黑";color:#333;}
         /* 浮层上部分关注图标 */
         .m-body .m-list .hover .info:before{content:'';position:absolute;top:3px;left:0;width:12px;height:12px;background:url(icon.png) no-repeat 0 0;}
         .m-body .m-list .hover p.provider,p.category{height:20px;font:12/20px "微软雅黑";color:#333;}
         /* 浮层下部分*/
         .m-body .m-list .hover div.lower {background-color:#f8f8f8;height:83px;font:14px/24px "微软雅黑";padding-top:1px;}  
-        .m-body .m-list .hover div.lower p{width:430px; height:48px; margin-left:20px; margin-top: 20px; overflow:hidden;}     
+        .m-body .m-list .hover div.lower p{width:430px; height:48px; margin-left:20px; margin-top: 20px; overflow: hidden;text-overflow:ellipsis;}     
 
 
         /*主内容区- 分页器*/
@@ -307,8 +307,8 @@
 
         <!-- 课程列表 -->
         <div class="m-list">
-     
-        <ul>
+        12345
+     <!--    <ul>
             <li>
                 <div class="normal">
                 <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
@@ -410,7 +410,7 @@
                 </div>
             </li>          
                    
-        </ul> 
+        </ul>  -->
     </div> 
     <!-- /课程列表 -->
 
@@ -447,7 +447,8 @@
         <!-- 热门推荐 -->
         <div class="m-hotlist">
             <div class="title">最热排行</div>
-            <ul>
+            <div class="hotlist">1234
+          <!--   <ul>
                 <li>
                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
                     <div class="txt">
@@ -548,7 +549,8 @@
                         </div>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
+            </div>
         </div>
         <!-- /热门推荐 -->        
     </div>
@@ -610,40 +612,72 @@
   
     </div>
      <script src='js/util.js'></script>
-     <script src='js/slider.js'></script>
      <script src='js/md5.js'></script>
-     <script src='js/login.js'></script>
      <script src='js/trimpath.js'></script>
-<script>
-    
-  
-  
-
+     <script src='js/slider.js'></script>
+     <script src='js/login.js'></script>
+     <!-- <script src='js/courselist.js'></script> -->
+<script type="text/template" id="hotlist">
+    <ul>
+        {list courselist as hotcourse}
+        <li>
+           <a href="" class="img"><img src="${hotcourse.smallPhotoUrl}" alt="电台名称" width="50px" height="50px"></a>
+           <div class="txt">
+           <h3><a href="">${hotcourse.name}</a></h3>
+               <div class="info">
+               <p>${hotcourse.learnerCount}</p>
+            </div>
+         </li>
+         {/list}
+    </ul>
 </script>
-<!--
+
 <script type="text/template" id="track-list">
   
          <ul>
-        {list tracks as track}
-          <li>
-                <a href=""><img src="${track.middlePhotoUrl}" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">${track.name}</p> 
-                <p class="author">${track.provider}</p>
-                <p class="fans">${track.learnerCount}</p>
-                <p class="price">￥${track.price}</p>                
+        {list courselist as track}
+          <li>  
+                <div class="normal">
+                    <a href=""><img src="${track.middlePhotoUrl}" width="223px" height="124px" alt="电台名称"></a>
+                    <p class="title">${track.name}</p> 
+                    <p class="author">${track.provider}</p>
+                    <p class="fans">${track.learnerCount}</p>
+                    <p class="price">￥${track.price}</p>
+                </div>
+                <div class="hover">
+                    <div class="upper">
+                    <a href=""><img src="${track.bigPhotoUrl}" width="223px" height="124px" alt="电台名称"></a>
+                        <div class="txt">
+                            <p class="title">${track.name}</p>                            
+                            <p class="info">${track.learnerCount}人在学</p>
+                            <p class="provider">发布者：${track.provider}</p>
+                            <p class="category">分类：${track.categoryName}</p>                            
+                        </div>
+                    </div>
+                    <div class="lower">
+                         <p>                        
+                       ${track.description}
+                        </p>           
+                    </div>
+                </div>                
            </li>           
          {/list}
          </ul>
          </script>
-  
-    <script>
-        var parent = document.getElementsByClassName('m-list')[0];
-        var tplContent = TrimPath.parse(
-            document.getElementById('track-list').textContent
+<script type="text/javascript">
+    // var courselist =  document.getElementsByClassName('m-list')[0];
+        var courselist =  $('.m-hotlist .hotlist')[0];
+        var hotlist = $('.m-hotlist .hotlist')[0];
+        
+         var tplContent = TrimPath.parse(
+           document.getElementById('track-list').textContent
         );
-    </script>
-    <script>
-        function render(parent,list){
+
+        var hotListContent = TrimPath.parse(
+            document.getElementById('hotlist').textContent
+        );
+   
+        function render(parent,list,template){
             // alert(list.totalCount);
            
             var config = {
@@ -655,18 +689,14 @@
                 }
             };
             var html = TrimPath.merge(
-                 tplContent,{tracks:list}, config
+                 template,{courselist:list},config
                
             );
-            parent.insertAdjacentHTML('afterBegin',html);
+             parent.insertAdjacentHTML('afterBegin',html);
         }
 
         // 刷新页面
-        window.addEventListener("load", function() {
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1);
-            return false;
-        });
-
+      
 
         $('.m-tab .product')[0].addEventListener("click", function(event) {
             event.preventDefault();            
@@ -690,12 +720,18 @@
         
          function callback1(data) {            
             var arr = JSON.parse(data).list;
-            // alert ('callback1' + arr.length);
-                // var arr1 = arrayGroup(arr, 16, 2);
+            var courselist =  $('.m-list')[0];
             $('.m-list')[0].textContent="";            
-            render(parent, arr);             
+            render(courselist, arr, tplContent);  
+            addMouseoverHandler($('.m-list .normal'));  
+            addMouseoutHandler($('.m-list .hover'));         
          }
 
+         function callback2(data) {    
+            var arr = JSON.parse(data);                
+            $('.m-hotlist .hotlist')[0].textContent="";            
+            render(hotlist, arr.slice(0,10),hotListContent);                  
+         }
 
         //数组处理
         function arrayGroup(arr, groupsize, groupId) {
@@ -704,30 +740,27 @@
             console.log(groupsize*groupId);
             return arr.slice(groupsize*(groupId-1), groupsize*groupId);
         }
-   
-    </script>    
-    -->
-
-    <script type="text/javascript">
+  
 
     //课程列表浮层交互
-    function addMouseoverHandler(nodes) {
-        function helper(i) {   
-           return  function() {
-            console.log(i);
-           $('.m-list .hover')[i].style.display="block"; 
-           }        
-        } 
-
+       // window.addEventListener("load", function() {  
+         
+      function addMouseoverHandler(nodes) { 
         for (var i=0;i<nodes.length;i++) {
+            // alert(i);
         nodes[i].addEventListener("mouseover", helper(i))
         }
+
+         function helper(i) {   
+           return  function() {
+                $('.m-list .hover')[i].style.display="block"; 
+           }        
+        } 
     }
 
     function addMouseoutHandler(nodes) {
         function helper(i) {   
            return  function() {
-            console.log(i);
                 $('.m-list .hover')[i].style.display="none"; 
            }        
         } 
@@ -736,19 +769,15 @@
         nodes[i].addEventListener("mouseout", helper(i))
         }
     }
-    addMouseoverHandler($('.m-list .normal'));
-    addMouseoutHandler($('.m-list .hover'));
- 
+           
+    // 热门课程列表
+        
+         get("http://study.163.com/webDev/hotcouresByCategory.htm", {}, callback2);  
+         get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1);  
 
-    //     $('.m-list .hover')[15].addEventListener("mouseout", function(event) {
-    //        // alert("mouseOver");   
-    //        // event.target.css('visibility','hidden');  
-    //        $('.m-list .hover')[15].style.display="none";
-    //        return false;
-    //     }); 
-    // // }
-    </script>
 
+</script>
+    
 
 </body>
 
