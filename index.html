@@ -88,19 +88,14 @@
         
         /*主内容区-课程列表*/
         .m-body .m-list {position:absolute; top:161px; left: 205px; width: 980px;}
-        .m-body .m-list li{
-            float:left;
-            width:225px;
-            height:228px;
-            /* 列表间距和分割线 */
-           /* padding:19px 0 0;*/
-            margin:0 18px 19px 0;
-            border-right:1px solid #e7e7e7;
+        .m-body .m-list li{float:left;position: relative; margin:0 18px 19px 0; border-right:1px solid #e7e7e7;
             border-bottom:1px solid #e7e7e7;
             border-left:1px solid #e7e7e7;
-            background-color: white;
+            background-color: white; }
+        .m-body .m-list .normal{width:225px; height:228px; 
         }
-        .m-body .m-list p{font:12px "微软雅黑"; overflow: hidden; text-overflow:ellipsis;white-space:nowrap; margin:8px 10px 8px 5px;}
+        
+        .m-body .m-list .normal p{font:12px "微软雅黑"; overflow: hidden; text-overflow:ellipsis;white-space:nowrap; margin:8px 10px 8px 5px;}
         .m-body .m-list p.title{color:#333;}
         .m-body .m-list p.author{color:#b6b6b6;}                                
         .m-body .m-list p.fans{ position:relative; padding-left:18px; width:20px;height:16px;border:1px solid #ddd; border-radius:2px; font-size:8px; line-height: 16px; color:#999;}
@@ -115,9 +110,26 @@
                 background:url(icon.png) no-repeat 0 0;
         }
         
+         /*主内容区-课程列表浮层*/
+        .m-body .m-list .hover{position:absolute; top:-11px;left:-11px;width:480px; height:238px; margin:0 18px 19px 0; border-right:1px solid #d0cfd0;border-bottom:1px solid #e7e7e7; border-left:1px solid #e7e7e7; background-color: white; display:none; z-index: 100; 
+        }
+        /* 浮层上部分*/
+        .m-body .m-list .hover .upper{width:100%;height:155px; /*padding:11px;*/}
+        .m-body .m-list .hover img{float:left;margin:11px 11px 0 11px;}   
+        .m-body .m-list .hover .txt{float:left;margin-top:11px; margin-left:9px;}
+        .m-body .m-list .hover p.title{height:36px;font:18px "微软雅黑";}
+        .m-body .m-list .hover p.info{position:relative;padding-left:16px;height:26px;font:12/20px "微软雅黑";color:#333;}
+        /* 浮层上部分关注图标 */
+        .m-body .m-list .hover .info:before{content:'';position:absolute;top:3px;left:0;width:12px;height:12px;background:url(icon.png) no-repeat 0 0;}
+        .m-body .m-list .hover p.provider,p.category{height:20px;font:12/20px "微软雅黑";color:#333;}
+        /* 浮层下部分*/
+        .m-body .m-list .hover div.lower {background-color:#f8f8f8;height:83px;font:14px/24px "微软雅黑";padding-top:1px;}  
+        .m-body .m-list .hover div.lower p{width:430px; height:48px; margin-left:20px; margin-top: 20px; overflow:hidden;}     
+
+
         /*主内容区- 分页器*/
          .m-body .m-page {position: absolute; width:302px; height:20px; bottom:120px;right:450px;line-height: 20px;text-align: center;}
-         .m-page a{display:inline-block;/*vertical-align:top;*/width:20px; height:20px; font-size:14px/20px "微软雅黑";transition:background-color 0.3s;}
+         .m-page a{display:inline-block;vertical-align:top;width:20px; height:20px; font-size:14px/20px "微软雅黑";transition:background-color 0.3s;}
          .m-page a+a{margin-left: 6px;}
          .m-page a.z-crt{background-color:#9dd8b1;color:white;}
          .m-page a.prev, a.next{background-color:#9dd8b1;color:white;width:30px; height:20px;}
@@ -155,7 +167,7 @@
                 height:26px;
                 overflow: hidden;text-overflow:ellipsis;white-space:nowrap; 
                 font:14px "微软雅黑";
-                color:#333;               
+                color:#333;            
             }
 
             .m-body .m-hotlist .info{
@@ -295,161 +307,111 @@
 
         <!-- 课程列表 -->
         <div class="m-list">
-        </div>
-          <!--   <ul>
+     
+        <ul>
             <li>
+                <div class="normal">
                 <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
                 <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
                 <p class="author">音频帮</p>
                 <p class="fans">510</p>
                 <p class="price">￥800.00</p>
-            </li>     
-                
-            </ul> -->
-
-           <!--  <ul>
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
+                </div>
+                 <div class="hover">
+                    <div class="upper">
+                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                        <div class="txt">
+                            <p class="title">手绘画系列</p>                            
+                            <p class="info">57人在学</p>
+                            <p class="provider">发布者：几分钟网</p>
+                            <p class="category">分类：手绘设计</p>                            
+                        </div>
+                    </div>
+                    <div class="lower">
+                         <p>                        
+                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
+                        </p>           
+                    </div>
+                </div>
+            </li>          
            <li>
+                <div class="normal">
                 <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
                 <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
                 <p class="author">音频帮</p>
                 <p class="fans">510</p>
                 <p class="price">￥800.00</p>
-            </li>       
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>             
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
+                </div>
+                 <div class="hover">
+                    <div class="upper">
+                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                        <div class="txt">
+                            <p class="title">手绘画系列</p>                            
+                            <p class="info">57人在学</p>
+                            <p class="provider">发布者：几分钟网</p>
+                            <p class="category">分类：手绘设计</p>                            
+                        </div>
+                    </div>
+                    <div class="lower">
+                         <p>                        
+                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
+                        </p>           
+                    </div>
+                </div>
+            </li>          
            <li>
+                <div class="normal">
                 <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
                 <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
                 <p class="author">音频帮</p>
                 <p class="fans">510</p>
                 <p class="price">￥800.00</p>
-            </li>      
+                </div>
+                 <div class="hover">
+                    <div class="upper">
+                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                        <div class="txt">
+                            <p class="title">手绘画系列</p>                            
+                            <p class="info">57人在学</p>
+                            <p class="provider">发布者：几分钟网</p>
+                            <p class="category">分类：手绘设计</p>                            
+                        </div>
+                    </div>
+                    <div class="lower">
+                         <p>                        
+                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
+                        </p>           
+                    </div>
+                </div>
+            </li>          
            <li>
+                <div class="normal">
                 <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
                 <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
                 <p class="author">音频帮</p>
                 <p class="fans">510</p>
                 <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-           <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>       
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>             
-            <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>     
-           <li>
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-            </li>                    
-        </ul>
-    </div> -->
+                </div>
+                 <div class="hover">
+                    <div class="upper">
+                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
+                        <div class="txt">
+                            <p class="title">手绘画系列</p>                            
+                            <p class="info">57人在学</p>
+                            <p class="provider">发布者：几分钟网</p>
+                            <p class="category">分类：手绘设计</p>                            
+                        </div>
+                    </div>
+                    <div class="lower">
+                         <p>                        
+                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
+                        </p>           
+                    </div>
+                </div>
+            </li>          
+                   
+        </ul> 
+    </div> 
     <!-- /课程列表 -->
 
     <!-- 翻页器 -->
@@ -658,8 +620,8 @@
   
 
 </script>
-
- <script type="text/template" id="track-list">
+<!--
+<script type="text/template" id="track-list">
   
          <ul>
         {list tracks as track}
@@ -668,8 +630,8 @@
                 <p class="title">${track.name}</p> 
                 <p class="author">${track.provider}</p>
                 <p class="fans">${track.learnerCount}</p>
-                <p class="price">￥${track.price}</p>
-            </li>           
+                <p class="price">￥${track.price}</p>                
+           </li>           
          {/list}
          </ul>
          </script>
@@ -734,13 +696,6 @@
             render(parent, arr);             
          }
 
-        // form.addEventListener(
-        //     'submit',
-        //     function(event) {
-        //         event.preventDefault();
-        //         get("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, callback);
-        //     });
-
 
         //数组处理
         function arrayGroup(arr, groupsize, groupId) {
@@ -749,7 +704,51 @@
             console.log(groupsize*groupId);
             return arr.slice(groupsize*(groupId-1), groupsize*groupId);
         }
+   
     </script>    
+    -->
+
+    <script type="text/javascript">
+
+    //课程列表浮层交互
+    function addMouseoverHandler(nodes) {
+        function helper(i) {   
+           return  function() {
+            console.log(i);
+           $('.m-list .hover')[i].style.display="block"; 
+           }        
+        } 
+
+        for (var i=0;i<nodes.length;i++) {
+        nodes[i].addEventListener("mouseover", helper(i))
+        }
+    }
+
+    function addMouseoutHandler(nodes) {
+        function helper(i) {   
+           return  function() {
+            console.log(i);
+                $('.m-list .hover')[i].style.display="none"; 
+           }        
+        } 
+
+        for (var i=0;i<nodes.length;i++) {
+        nodes[i].addEventListener("mouseout", helper(i))
+        }
+    }
+    addMouseoverHandler($('.m-list .normal'));
+    addMouseoutHandler($('.m-list .hover'));
+ 
+
+    //     $('.m-list .hover')[15].addEventListener("mouseout", function(event) {
+    //        // alert("mouseOver");   
+    //        // event.target.css('visibility','hidden');  
+    //        $('.m-list .hover')[15].style.display="none";
+    //        return false;
+    //     }); 
+    // // }
+    </script>
+
 
 </body>
 
