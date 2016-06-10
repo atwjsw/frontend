@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <meta name="description" content="网易前端开发工程师微专业作业">
     <style type="text/css">
-    	.g-doc {width:1616px;}
+    	.g-doc {width:1616px;position:relative}
 
         /*登录框*/
         /*body, button, input, legend{margin: 0;padding: 0;font: 16px "微软雅黑";} */
@@ -30,7 +30,12 @@
         .m-form .j-disabled{cursor: default;background-color: #ddd;}
         
         /*遮罩*/
-        .mask{position:fixed;top:0;left:0;z-index:998;width:100%;height:100%;background-color:#000;opacity:0.7; display:none;} 
+        .mask{position:fixed;top:0;left:0;z-index:998;width:100%;height:100%;background-color:#000;opacity:0.7; display:none;}
+
+        /*视频介绍弹窗*/
+        .g-video {position:absolute;width:950px;height:676px;top:946px;left:50%;transform: translateX(-50%);background-color:white;z-index:999;display:none;}
+        .g-video p.title {font:18px/28px "微软雅黑"; color:#444;margin:30px 30px 0;} 
+        .g-video video{margin-left:30px;}      
 
     	/*提醒通知条*/
     	.g-notice {width:100%;height:36px;background-color:#f3f3f3; font:12px/36px "微软雅黑";}
@@ -211,6 +216,14 @@
 
 <body>
 	<div class="g-doc">
+    
+    <!-- 视频弹窗 -->
+    <div class="g-video">       
+        <p class="title">请观看下面的视频</p>        
+        <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" width="889px" height="567px" controls>   </video>       
+    </div>   
+    <!-- /视频弹窗 -->
+
     <!-- 提醒通知条 -->
     <div class="g-notice">
         <p class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</p>
@@ -582,7 +595,7 @@
             <div><a href="">意见反馈</a></div>              
         </div>      
     </div>
-	 <!-- 底栏 -->
+	 <!-- /底栏 -->
     
     <!-- 登录框 -->
    <!--  <div class="login"> -->
@@ -605,8 +618,9 @@
             <div><button name="loginBtn">登 录</button></div>
           </fieldset>
         </form>
-    <!--     <iframe name="result" id="result" style="display:none;"></iframe> -->       
-   <!--  </div> -->
+   <!--/ 登录框 -->
+
+
 
     <div class="mask"></div>
   
@@ -642,7 +656,7 @@
                     <p class="title">${track.name}</p> 
                     <p class="author">${track.provider}</p>
                     <p class="fans">${track.learnerCount}</p>
-                    <p class="price">￥${track.price}</p>
+                    <p class="price">{if track.price == "0"}免费{else}￥${track.price}{/if}</p>
                 </div>
                 <div class="hover">
                     <div class="upper">
@@ -728,10 +742,17 @@
          }
 
          function callback2(data) {    
-            var arr = JSON.parse(data);                
-            $('.m-hotlist .hotlist')[0].textContent="";            
-            render(hotlist, arr.slice(0,10),hotListContent);                  
-         }
+            var arr = JSON.parse(data); 
+                    $('.m-hotlist .hotlist')[0].textContent=""; 
+                    render(hotlist, arr.slice(0,10), hotListContent); 
+                setInterval(function(){
+                    $('.m-hotlist .hotlist')[0].textContent=""; 
+                    render(hotlist, arr.slice(0,10), hotListContent);
+                    var firstItem = arr.shift();                
+                    arr.push(firstItem);
+                },5000)               
+            }                 
+      
 
         //数组处理
         function arrayGroup(arr, groupsize, groupId) {

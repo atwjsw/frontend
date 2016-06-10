@@ -170,3 +170,12 @@ form.addEventListener(
         event.preventDefault();
         get("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, callback);
     });
+
+
+//视频弹窗交互
+
+$('.m-introduction video')[0].addEventListener("click", function() {
+    $('.g-video')[0].style.display = "block";
+    $('.mask')[0].style.display = "block";
+});
+
