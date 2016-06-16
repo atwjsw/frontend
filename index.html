@@ -230,19 +230,20 @@
     <!-- 翻页器 -->
     <div class="m-page">
               <!-- <a class="btn s" href="#">首页</a> -->
-              <a class="prev" href="#"><</a>
-              <a class="pgi" href="#">1</a>
-              <a class="pgi z-crt" href="#">2</a>
-              <a class="pgi" href="#">3</a>
-              <a class="pgi" href="#">4</a>
-              <a class="pgi" href="#">5</a>
-              <a class="pgi" href="#">6</a>
-              <a class="pgi" href="#">7</a>
-              <a class="pgi" href="#">8</a>
-              <a class="next" href="#">></a>
+              <span class="prev" href="#"><</span>
+              <span class="pgi z-crt" href="#">1</span>
+              <span class="pgi" href="#">2</span>
+              <span class="pgi" href="#">3</span>
+              <span class="pgi" href="#">4</span>
+              <span class="pgi" href="#">5</span>
+              <span class="pgi" href="#">6</span>
+              <span class="pgi" href="#">7</span>
+              <span class="pgi" href="#">8</span>
+              <span class="next" href="#">></span>
               <!-- <a class="btn e" href="#">尾页</a> -->
     </div>
 
+   
     
         <!-- 机构介绍 -->
         <div class="m-introduction">
@@ -512,23 +513,33 @@
         }
 
         // Tab交互
+        var pageNo=1;
+        var type=10;
+        var psize=16;
+
         $('.m-tab .product')[0].addEventListener("click", function(event) {
-            event.preventDefault();            
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1); 
+            event.preventDefault(); 
+            type=10;           
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:type}, callback1); 
             $('.m-tab .program')[0].style.backgroundColor="white";
             $('.m-tab .program a')[0].style.color="#666" ; 
             $('.m-tab .product')[0].style.backgroundColor="#39a030";
-            $('.m-tab .product a')[0].style.color="white";                  
+            $('.m-tab .product a')[0].style.color="white";   
+            util.delClass($('.m-page .z-crt')[0],"z-crt"); 
+            util.addClass($('.m-page .pgi')[0], "z-crt");              
             return false;
         });
 
         $('.m-tab .program')[0].addEventListener("click", function(event) {
             event.preventDefault();
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:20 }, callback1); 
+            type=20;
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:type}, callback1); 
             $('.m-tab .program')[0].style.backgroundColor="#39a030";
             $('.m-tab .program a')[0].style.color="white" ; 
             $('.m-tab .product')[0].style.backgroundColor="white";
-            $('.m-tab .product a')[0].style.color="#666" ;               
+            $('.m-tab .product a')[0].style.color="#666" ; 
+            util.delClass($('.m-page .z-crt')[0],"z-crt"); 
+            util.addClass($('.m-page .pgi')[0], "z-crt");                            
             return false;
         });
         
@@ -584,13 +595,10 @@
 
     function addMouseoutHandler(nodes) {
         function helper(i) {   
-           return  function() {
-                // setTimeout(function(){
-                    $('.m-list div.hover')[i].style.display="none"}
-                    // , 500)}
-           }        
-       
-
+           return  function() {            
+                    $('.m-list div.hover')[i].style.display="none"
+                }          
+           }  
         for (var i=0;i<nodes.length;i++) {
             nodes[i].addEventListener("mouseleave", helper(i))
         }
@@ -603,7 +611,28 @@
       get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1); 
     });
     
-        
+     
+   
+    var currentPage=1;
+    //翻页器交互
+      function addClickHandler(nodes) {
+        function helper(i) {
+
+           return function(){
+                // alert(i+1); 
+                util.delClass($('.m-page .z-crt')[0],"z-crt");
+                var pageNo = parseInt(i+1);
+                get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:pageNo, psize:16, type:type }, callback1); 
+                util.addClass(nodes[i],"z-crt");
+
+       }
+    }
+        for (var i=0;i<nodes.length;i++) {
+            nodes[i].addEventListener("click", helper(i));            
+        }
+    }
+    
+    var i = addClickHandler($('.m-page .pgi'));  
          
 
 </script>

@@ -125,11 +125,11 @@
 
         /*主内容区- 分页器*/
          .m-body .m-page {position: absolute; width:302px; height:20px; bottom:120px;right:450px;line-height: 20px;text-align: center;}
-         .m-page a{display:inline-block;vertical-align:top;width:20px; height:20px; font-size:14px/20px "微软雅黑";transition:background-color 0.3s;}
-         .m-page a+a{margin-left: 6px;}
-         .m-page a.z-crt{background-color:#9dd8b1;color:white;}
-         .m-page a.prev, a.next{background-color:#9dd8b1;color:white;width:30px; height:20px;}
-         .m-page a:hover{color:#39a030;}
+         .m-page span{display:inline-block;vertical-align:top;width:20px; height:20px; font-size:14px/20px "微软雅黑";transition:background-color 0.3s;}
+         .m-page span+span{margin-left: 6px;}
+         .m-page span.z-crt{background-color:#9dd8b1;color:white;}
+         .m-page span.prev, span.next{background-color:#9dd8b1;color:white;width:30px; height:20px;}
+         .m-page span:hover{color:#39a030;cursor:pointer;}
        
         /*主内容区- 机构介绍*/
         .m-body .m-introduction {position: absolute; width:223px; height:230px; top:84px; right: 205px; border:1px solid #ecebeb; /*padding:20px; box-sizing: border-box;*/}
