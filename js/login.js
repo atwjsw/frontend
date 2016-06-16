@@ -96,7 +96,7 @@ if (getCookie('loginSuc') == "true") {
 
 $('.g-top1 a.attention')[0].addEventListener("click", function() {
     $('.m-form')[0].style.display = "block";
-    $('.mask')[0].style.display = "block";
+    $('.mask')[0].style.display = "block";   
 });
 
 $('.g-notice a.noremind')[0].addEventListener("click", function() {
@@ -104,6 +104,14 @@ $('.g-notice a.noremind')[0].addEventListener("click", function() {
     $('.g-notice')[0].style.display = "none";
     return false;
 });
+
+// 关闭登录框
+$('.m-form .close')[0].addEventListener("click", function() {
+    $('.m-form')[0].style.display = "none";
+    $('.mask')[0].style.display = "none";      
+});
+
+
 
 //登录框交互
 var form = document.forms.loginForm,
@@ -170,6 +178,7 @@ form.addEventListener(
         event.preventDefault();
         get("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, callback);
     });
+
 
 
 //视频弹窗交互

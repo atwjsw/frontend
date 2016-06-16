@@ -5,212 +5,11 @@
     <meta charset="utf-8">
     <title>微专业前端开发作业</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
     <meta name="description" content="网易前端开发工程师微专业作业">
     <style type="text/css">
-    	.g-doc {width:1616px;position:relative}
-
-        /*登录框*/
-        /*body, button, input, legend{margin: 0;padding: 0;font: 16px "微软雅黑";} */
-      /*  .m-form{position:fixed; top:50%; left:50%;transform:translateY(-50%);transform: translateX(-50%);}  */
-        .m-form{position:fixed; margin:auto; left:0; top:0; right:0; bottom:0; display:none;}    
-        .m-form{/*margin: 150px auto;*/width: 387px; height: 289px; background-color:white;z-index:999;}
-        .m-form legend {margin-left: 40px; margin-top:30px; margin-bottom: 5px; font:bold 18px "微软雅黑"; color:#444;}
-        .m-form .u-txt {margin-left: 40px; margin-top:15px;width:282px; height:44px; font:16px "微软雅黑"; border:1px solid #dfdfdf; line-height: 44px; box-shadow: 2px 2px 2px #f1f1f1 inset; padding-left: 11px;} /*border:1px solid #f1f1f1;*/
-        /*.m-form fieldset{border: none;padding: 20px;}*/
-      /*  .m-form div{margin: 40px;}*/
-        .m-form button{width: 293px;height: 46px; margin-left: 40px; margin-top:29px; color:#fff;cursor:pointer;background-color: #189f36;font:bold 16px "微软雅黑"; box-shadow:2px 2px #d5e3da; border:none;}
-        .m-form .msg{margin-left:40px; margin-bottom:-15px;display:none;font:14px "微软雅黑";}
-        .m-form .tip{padding-left:6em;font-size:12px;color:#C0C0C0;}
-        .m-form .j-err{display:block;color:#FF0000;}
-        .m-form .j-suc{display:block;color:#158226;}
-        /*.m-form .u-txt{width: 160px;padding: 3px;border:1px solid #aaa;}*/
-        .m-form .j-error{border-color: #f00;background-color: #FFE7E7;}
-        .m-form .j-disabled{cursor: default;background-color: #ddd;}
-        
-        /*遮罩*/
-        .mask{position:fixed;top:0;left:0;z-index:998;width:100%;height:100%;background-color:#000;opacity:0.7; display:none;}
-
-        /*视频介绍弹窗*/
-        .g-video {position:absolute;width:950px;height:676px;top:946px;left:50%;transform: translateX(-50%);background-color:white;z-index:999;display:none;}
-        .g-video p.title {font:18px/28px "微软雅黑"; color:#444;margin:30px 30px 0;} 
-        .g-video video{margin-left:30px;}      
-
-    	/*提醒通知条*/
-    	.g-notice {width:100%;height:36px;background-color:#f3f3f3; font:12px/36px "微软雅黑";}
-    	.g-notice p{display:inline-block; margin-left:206px;}
-        .g-notice a.check{display:inline-block; margin-left: 5px;color: #21a557;}
-        .g-notice a.noremind{display:inline-block; margin-left: 670px;}
     	
-        /*顶栏1 */
-    	.g-top1 {width:100%;height:89px;line-height:89px;}
-       	.g-top1 .edu{display:inline-block;margin-left:200px;font:bold 28px "Gill Sans MT";color:#39a030;vertical-align:middle;}
-        .g-top1 .divider{display:inline-block;margin-left:10px;font:18px "微软雅黑";color:#39a030; vertical-align:middle;}
-        .g-top1 .netease{display:inline-block; margin-left:13px; font:22px "微软雅黑";color:#333; vertical-align:middle;}   
-        .g-top1 a.attention{display:inline-block;width:54px;height:21px;border-radius:2px; margin-left:30px; font:12px/21px "微软雅黑"; vertical-align: middle;color:white;background-color: #21a557;text-align:center;}
-        .g-top1 a.attention:hover{background-color:#2acd6d;}
-        .g-top1 .attnDone{display:none;width:108px;height:21px;border-radius:2px; border:1px solid #ccc; margin-left:30px; font:12px/21px "微软雅黑"; vertical-align: middle; background-color: #f3f3f3;text-align:center;}
-        .g-top1 .attnDone a{color:#ccc;}
-        .g-top1 .attnDone a:hover{color:#2acd6d; text-decoration:underline;}
-        .g-top1 em{font-size:15px;}   
-        .g-top1 .fans{display:inline-block; width: 54px; height:21px; margin-left: 10px; font: 12px/21px "微软雅黑"; vertical-align: middle; text-align: center;}  
-        .g-top1 .m-navbar1 {display:inline-block; margin-left:420px; font:16px "微软雅黑";}
-        .g-top1 li{display:inline-block; margin-right: 55px;}
-        .g-top1 .m-navbar1 a:hover{color:#39a030;}
-
-        /*轮播图*/
-        .m-slide{position:relative;width:100%;height:460px;overflow:hidden;}          
-        
-        /*顶栏2*/
-        /* 左侧Logo区 */
-    	.m-top2 {width:100%;height:295px;text-align:center;}
-        .m-top2 li{display:inline-block; margin-top:60px; width: 338px; height:100%;} 
-        .m-top2 li+li{margin-left:85px;}   
-        .m-top2 div.circle{float:left;width:80px;height:80px; border-radius:50%;background-color:#39a030;margin-top: 5px; overflow:hidden;background-color:#39a030;}
-      /*   .m-top2 .logo{width:40px;height:40px;background:url(icon.png) no-repeat 10px 0;} */ 
-
-        /* 右侧文本区 */
-        .m-top2 .txt{float:left; margin-left: 20px; width:238px; text-align:left;}
-        .m-top2 h3{font:20px "微软雅黑";}
-        .m-top2 p{width:240px; height:96px; font:14px/24px "微软雅黑"; margin-bottom: 24px; margin-top:10px; color: #666;}
-        .m-top2 a{font:14px/24px "微软雅黑"; color:#39a030;}
-        .m-top2 a:hover{text-decoration: underline;}
-        
-        /*工作环境图片区*/
-        .workenv {border-top:1px solid #f8f8f8;}
-        
-        /*主内容区*/
-        .m-body {position: relative; width:100%;height:1550px;background-color:#f8f8f8;}
-
-        /*主内容区-tab*/
-        .m-body .m-tab {position: absolute; top:81px; left: 205px; background-color: white; border-bottom:1px solid #d4d3d3; border-left:1px solid #ecebeb; border-right:1px solid #ecebeb; /*border-bottom:1px solid #ecebeb;*/}
-        .m-body .m-tab ul{font-size: 0;}
-        .m-body .m-tab li{display:inline-block; width:200px; height:50px; text-align: center; font:20px/50px "微软雅黑"; color:#666;}  
-        .m-body .m-tab li.z-crt{background-color:#39a030; font:20px/50px "微软雅黑";}  
-        .m-body .m-tab li.z-crt a{color:white;}  
-
-        
-        /*主内容区-课程列表*/
-        .m-body .m-list {position:absolute; top:161px; left: 205px; width: 980px;}
-        .m-body .m-list li{float:left;position: relative; margin:0 18px 19px 0; border-right:1px solid #e7e7e7;
-            border-bottom:1px solid #e7e7e7;
-            border-left:1px solid #e7e7e7;
-            background-color: white; }
-        .m-body .m-list .normal{width:225px; height:228px; 
-        }
-        
-        .m-body .m-list .normal p{font:12px "微软雅黑"; overflow: hidden; text-overflow:ellipsis;white-space:nowrap; margin:8px 10px 8px 5px;}
-        .m-body .m-list p.title{color:#333;}
-        .m-body .m-list p.author{color:#b6b6b6;}                                
-        .m-body .m-list p.fans{ position:relative; padding-left:18px; width:20px;height:16px;border:1px solid #ddd; border-radius:2px; font-size:8px; line-height: 16px; color:#999;}
-        .m-body .m-list p.price{color:#ff3f00;}
-        .m-body .m-list p.fans:before{
-                content:'';
-                position:absolute;
-                top:2px;
-                left:3px;
-                width:12px;
-                height:12px;
-                background:url(icon.png) no-repeat 0 0;
-        }
-        
-         /*主内容区-课程列表浮层*/
-        .m-body .m-list .hover{position:absolute; top:-11px;left:-11px;width:480px; height:238px; margin:0 18px 19px 0; border-right:1px solid #d0cfd0;border-bottom:1px solid #e7e7e7; border-left:1px solid #e7e7e7; background-color: white; display:none; z-index: 100; 
-        }
-        /* 浮层上部分*/
-        .m-body .m-list .hover .upper{width:100%;height:155px;}
-        .m-body .m-list .hover img{float:left;margin:11px 11px 0 11px;}   
-        .m-body .m-list .hover .txt{float:left;margin-top:11px; margin-left:9px;}
-        .m-body .m-list .hover p.title{height:60px; width:200px;font:18px/22px "微软雅黑";overflow:hidden;/*text-overflow:ellipsis;*//*white-space:nowrap;*/}
-        .m-body .m-list .hover p.info{position:relative;padding-left:16px;height:26px;font:12/20px "微软雅黑";color:#333;}
-        /* 浮层上部分关注图标 */
-        .m-body .m-list .hover .info:before{content:'';position:absolute;top:3px;left:0;width:12px;height:12px;background:url(icon.png) no-repeat 0 0;}
-        .m-body .m-list .hover p.provider,p.category{height:20px;font:12/20px "微软雅黑";color:#333;}
-        /* 浮层下部分*/
-        .m-body .m-list .hover div.lower {background-color:#f8f8f8;height:83px;font:14px/24px "微软雅黑";padding-top:1px;}  
-        .m-body .m-list .hover div.lower p{width:430px; height:48px; margin-left:20px; margin-top: 20px; overflow: hidden;text-overflow:ellipsis;}     
-
-
-        /*主内容区- 分页器*/
-         .m-body .m-page {position: absolute; width:302px; height:20px; bottom:120px;right:450px;line-height: 20px;text-align: center;}
-         .m-page a{display:inline-block;vertical-align:top;width:20px; height:20px; font-size:14px/20px "微软雅黑";transition:background-color 0.3s;}
-         .m-page a+a{margin-left: 6px;}
-         .m-page a.z-crt{background-color:#9dd8b1;color:white;}
-         .m-page a.prev, a.next{background-color:#9dd8b1;color:white;width:30px; height:20px;}
-         .m-page a:hover{color:#39a030;}
-       
-        /*主内容区- 机构介绍*/
-        .m-body .m-introduction {position: absolute; width:223px; height:230px; top:84px; right: 205px; border:1px solid #ecebeb; /*padding:20px; box-sizing: border-box;*/}
-        .m-body .m-introduction .title{font:16px/66px "微软雅黑"; border-bottom:1px solid #ecebeb; text-indent: 20px;}
-        .m-body .m-introduction .video{font:16px/30px "微软雅黑"; margin-left: 20px; }
-        /*.m-body .m-introduction div.video{top:50%;left:50%;background:url(icon.png) no-repeat 0 0;}*/
-
-        /*主内容区 -最热排行*/
-        .m-body .m-hotlist {position: absolute; width:223px; height:778px; top:334px; right: 205px; border:1px solid #ecebeb; }
-        .m-body .m-hotlist .title{font:16px/66px "微软雅黑"; border-bottom:1px solid #ecebeb; text-indent: 20px;}
-        .m-body .m-hotlist li{width:100%;height:50px;margin:20px 0;}
-
-           .m-body .m-hotlist img{
-                float:left;
-               /* width:120px;
-                height:120px;*/
-                margin-left: 20px;
-                overflow:hidden;
-            }  
-
-            /* 右侧文本区 */
-            .m-body .m-hotlist .txt{
-                float:left;
-                margin-left: 12px;
-                width:120px;               
-            }
-
-            /* 标题 */
-            .m-body .m-hotlist h3{
-                /* 一行高度 */
-                height:26px;
-                overflow: hidden;text-overflow:ellipsis;white-space:nowrap; 
-                font:14px "微软雅黑";
-                color:#333;            
-            }
-
-            .m-body .m-hotlist .info{
-                position:relative;
-                /* 左侧留出空间放图标 */
-                padding-left:20px;
-                line-height:12px;
-                font:10px "微软雅黑";
-                overflow:hidden;
-            }
-
-            /* 关注图标 */
-            .m-body .m-hotlist .info:before{
-                content:'';
-                position:absolute;
-                top:2px;
-                left:0;
-                width:11px;
-                height:11px;
-                background:url(icon.png) no-repeat 0 0;
-            }
-
-        /*底栏*/
-        .m-bottom {position:relative; width:100%;height:262px;background-color:#2c3339;}  
-        .m-bottom .area1{position:absolute; top:93px;left:257px;}
-        .m-bottom .edu{display:inline-block; font: bold 28px "Gill Sans MT"; color:#39a030; vertical-align: top}
-        .m-bottom .netease{display:inline-block; margin-bottom: 20px; font: 22px "微软雅黑"; color:#39a030; vertical-align: top}   
-        .m-bottom .icp{font: 13px/25px "微软雅黑"; color: #bebfc0}
-
-        .m-bottom .area2{position:absolute;top:82px;left:800px;}        
-        .m-bottom .area3{position:absolute;top:82px;left:1010px;}
-        .m-bottom .area4{position:absolute;top:82px;left:1145px;}
-        .m-bottom .title{font:12px/30px "微软雅黑";color:#bebfc0;}
-        .m-bottom a{font:15px/30px "微软雅黑";color:#bebfc0;}
-
-        
-
-
     </style>
 </head>
 
@@ -238,13 +37,14 @@
             <p class="divider">|</p>
             <p class="netease">网易教育产品部</p>
             <a class="attention"><em>+</em> 关注</a>
-            <div class="attnDone">/ 已关注 | <a>取消</a></div>
+            <div class="attnDone"><span class="tick"></span><span> 已关注 | <a>取消</a></span></div>
             <p class="fans">粉丝 45</p>
             <div class="m-navbar1">
                 <ul>
                     <li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
                     <li><a href="http://study.163.com/" target="_blank">云课堂</a></li>
                     <li><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
+                    <li><div class=search></div></li>
                 </ul>
             </div>
     </div>
@@ -617,6 +417,7 @@
             </div>
             <div><button name="loginBtn">登 录</button></div>
           </fieldset>
+          <div class="close"></div>
         </form>
    <!--/ 登录框 -->
 
@@ -679,6 +480,7 @@
          </ul>
          </script>
 <script type="text/javascript">
+     
     // var courselist =  document.getElementsByClassName('m-list')[0];
         var courselist =  $('.m-hotlist .hotlist')[0];
         var hotlist = $('.m-hotlist .hotlist')[0];
@@ -709,9 +511,7 @@
              parent.insertAdjacentHTML('afterBegin',html);
         }
 
-        // 刷新页面
-      
-
+        // Tab交互
         $('.m-tab .product')[0].addEventListener("click", function(event) {
             event.preventDefault();            
             get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1); 
@@ -737,8 +537,8 @@
             var courselist =  $('.m-list')[0];
             $('.m-list')[0].textContent="";            
             render(courselist, arr, tplContent);  
-            addMouseoverHandler($('.m-list .normal'));  
-            addMouseoutHandler($('.m-list .hover'));         
+            addMouseoverHandler($('.m-list div.normal'));  
+            addMouseoutHandler($('.m-list div.hover'));         
          }
 
          function callback2(data) {    
@@ -767,35 +567,44 @@
        // window.addEventListener("load", function() {  
          
       function addMouseoverHandler(nodes) { 
-        for (var i=0;i<nodes.length;i++) {
-            // alert(i);
-        nodes[i].addEventListener("mouseover", helper(i))
-        }
-
          function helper(i) {   
            return  function() {
-                $('.m-list .hover')[i].style.display="block"; 
+                // setTimeout(function(){
+                    $('.m-list div.hover')[i].style.display="block"} 
+                    // ,500);             
+                // }// $('.m-list div.hover')[i].style.zIndex="100"; 
            }        
-        } 
+       
+
+        for (var i=0;i<nodes.length;i++) {
+            // alert(i);
+            nodes[i].addEventListener("mouseenter", helper(i))
+        }
     }
 
     function addMouseoutHandler(nodes) {
         function helper(i) {   
            return  function() {
-                $('.m-list .hover')[i].style.display="none"; 
+                // setTimeout(function(){
+                    $('.m-list div.hover')[i].style.display="none"}
+                    // , 500)}
            }        
-        } 
+       
 
         for (var i=0;i<nodes.length;i++) {
-        nodes[i].addEventListener("mouseout", helper(i))
+            nodes[i].addEventListener("mouseleave", helper(i))
         }
     }
            
     // 热门课程列表
-        
-         get("http://study.163.com/webDev/hotcouresByCategory.htm", {}, callback2);  
-         get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1);  
 
+    window.addEventListener("load", function() {
+      get("http://study.163.com/webDev/hotcouresByCategory.htm", {}, callback2);  
+      get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1); 
+    });
+    
+        
+         
 
 </script>
     
