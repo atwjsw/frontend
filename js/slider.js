@@ -16,8 +16,6 @@
 
 ;(function(_){
 
-
-
   // 将HTML转换为节点
   function html2node(str){
     var container = document.createElement('div');
@@ -176,7 +174,6 @@
       this.slider.addEventListener('mousemove', this._dragmove.bind(this));
       this.slider.addEventListener('mouseup', this._dragend.bind(this));
       this.slider.addEventListener('mouseleave', this._dragend.bind(this));
-
     },
 
     _dragstart: function(ev){
@@ -250,6 +247,13 @@ cursors.forEach(function(cursor, index){
   })
 })
 
+// var slides = $('.m-slide img');
+// slides.forEach(function(slide, index){
+//   slide.addEventListener('click', function(){
+//     alert(index);
+//   })
+// })
+
 // prev.addEventListener('click', function(){
 //   slider.prev()
 // })
@@ -295,19 +299,37 @@ slider.on('nav', function( ev ){
 
 })
 
-// 3s 自动轮播
-setInterval(function(){
-  
-  // 下一页
-  slider.next();
 
-},5000)
-
+// 5s 自动轮播
+var int = 0;
+ int=setInterval(function(){  
+    // 下一页
+    slider.next();
+  },5000);
 // 直接跳到第二页
-slider.nav(0);
+slider.nav(1);
 
+//点击跳转到相应的URL
+var imgs = $('.m-slide  img');
+urls = ["http://open.163.com/", "http://study.163.com/", "http://www.icourse163.org/"];
 
+imgs.forEach(function(img, index) {
+  img.addEventListener("click", function(){
+      window.open(urls[img.src.slice(-5,-4)-1]);   
+   })
+});
 
-
-
-
+//鼠标悬停某张图片，则暂停切换；
+imgs.forEach(function(img, index) {
+  img.addEventListener("mouseenter", function(){
+    // alert("mouseover");
+      clearInterval(int);
+   })
+   img.addEventListener("mouseleave", function(){
+        // alert("mouseout");
+       int=setInterval(function(){  
+    // 下一页
+    slider.next();
+  },5000)
+   })
+});

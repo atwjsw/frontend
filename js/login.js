@@ -183,8 +183,19 @@ form.addEventListener(
 
 //视频弹窗交互
 
+var video = $('.g-video video')[0];
+
 $('.m-introduction video')[0].addEventListener("click", function() {
     $('.g-video')[0].style.display = "block";
     $('.mask')[0].style.display = "block";
+    // $('.g-video video')[0].style.display = "block";
+    $('.g-video')[0].appendChild(video);
+});
+
+$('.g-video .close')[0].addEventListener("click", function() {
+    $('.g-video')[0].removeChild(video);
+    // $('.g-video video')[0].style.display = "none";
+    $('.g-video')[0].style.display = "none";
+    $('.mask')[0].style.display = "none";   
 });
 

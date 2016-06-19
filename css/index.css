@@ -26,7 +26,9 @@
         /*视频介绍弹窗*/
         .g-video {position:absolute;width:950px;height:676px;top:946px;left:50%;transform: translateX(-50%);background-color:white;z-index:999;display:none;}
         .g-video p.title {font:18px/28px "微软雅黑"; color:#444;margin:30px 30px 0;} 
-        .g-video video{margin-left:30px;}      
+        .g-video video{margin-left:30px;} 
+        .g-video .close{position:absolute;top:13px;right:12px; width:10px; height:10px; background:url("icon.png") 0 -20px no-repeat;}
+        .g-video .close:hover{cursor:pointer;}     
 
     	/*提醒通知条*/
     	.g-notice {width:100%;height:36px;background-color:#f3f3f3; font:12px/36px "微软雅黑";}
@@ -61,7 +63,10 @@
     	.m-top2 {width:100%;height:295px;text-align:center;}
         .m-top2 li{display:inline-block; margin-top:60px; width: 338px; height:100%;} 
         .m-top2 li+li{margin-left:85px;}   
-        .m-top2 div.circle{float:left;width:80px;height:80px; border-radius:50%;background-color:#39a030;margin-top: 5px; overflow:hidden;background-color:#39a030;}
+        .m-top2 div.circle{float:left;width:80px;height:80px; border-radius:50%;background-color:#39a030;margin-top: 5px; overflow:hidden;}
+        .m-top2 div.logo1{background:url("icon.png") 0 -140px no-repeat;width:38px;height:38px;margin:21px 21px;}
+        .m-top2 div.logo2{background:url("icon.png") 0 -100px no-repeat;width:38px;height:38px;margin:21px 21px;}
+        .m-top2 div.logo3{background:url("icon.png") 0 -180px no-repeat;width:48px;height:40px;margin:20px 16px;}
       /*   .m-top2 .logo{width:40px;height:40px;background:url(icon.png) no-repeat 10px 0;} */ 
 
         /* 右侧文本区 */
