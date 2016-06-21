@@ -45,9 +45,11 @@
                     <li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
                     <li><a href="http://study.163.com/" target="_blank">云课堂</a></li>
                     <li><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
-                    <li><div class=search></div></li>
+                    <li class="search"><!-- <div class=search></div> --></li>
                 </ul>
+
             </div>
+            
     </div>
     <!-- /顶栏1  -->
     
@@ -100,7 +102,11 @@
 
     <!-- 工作环境图片区 -->
     <div class="workenv">
-        <img src="imgs/workenv.jpg" width="1616px" height="220px">
+        <p><img src="imgs/workenv.jpg"></p>
+       <!-- 
+        <img src="imgs/workenv.jpg"> -->
+   <!--      </div> -->
+        <!-- width="1616px" height="220px"   -->
     </div>
      <!-- /工作环境图片区 -->
 
@@ -513,12 +519,12 @@
         // Tab交互
         var pageNo=1;
         var type=10;
-        var psize=16;
+        var psize=20;
 
         $('.m-tab .product')[0].addEventListener("click", function(event) {
             event.preventDefault(); 
             type=10;           
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:type}, callback1); 
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:type}, callback1); 
             $('.m-tab .program')[0].style.backgroundColor="white";
             $('.m-tab .program a')[0].style.color="#666" ; 
             $('.m-tab .product')[0].style.backgroundColor="#39a030";
@@ -531,7 +537,7 @@
         $('.m-tab .program')[0].addEventListener("click", function(event) {
             event.preventDefault();
             type=20;
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:type}, callback1); 
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:type}, callback1); 
             $('.m-tab .program')[0].style.backgroundColor="#39a030";
             $('.m-tab .program a')[0].style.color="white" ; 
             $('.m-tab .product')[0].style.backgroundColor="white";
@@ -606,7 +612,7 @@
 
     window.addEventListener("load", function() {
       get("http://study.163.com/webDev/hotcouresByCategory.htm", {}, callback2);  
-      get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:16, type:10 }, callback1); 
+      get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:10 }, callback1); 
     });
     
      
@@ -620,7 +626,7 @@
                 // alert(i+1); 
                 util.delClass($('.m-page .z-crt')[0],"z-crt");
                 var pageNo = parseInt(i+1);
-                get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:pageNo, psize:16, type:type }, callback1); 
+                get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:pageNo, psize:psize, type:type }, callback1); 
                 util.addClass(nodes[i],"z-crt");
 
        }
