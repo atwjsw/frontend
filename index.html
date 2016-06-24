@@ -14,7 +14,15 @@
 </head>
 
 <body>
-	<div class="g-doc">
+    <!-- 提醒通知条 -->
+    <div class="g-notice">
+        <div class="txtarea">
+            <p class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</p>
+            <a class="check" href="#">立即查看></a>
+            <a class="noremind" href="#">X 不再提醒</a>
+        </div>      
+    </div>
+    <!-- /提醒通知条 -->	
     
     <!-- 视频弹窗 -->
     <div class="g-video">       
@@ -24,16 +32,10 @@
     </div>   
     <!-- /视频弹窗 -->
 
-    <!-- 提醒通知条 -->
-    <div class="g-notice">
-        <p class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</p>
-        <a class="check" href="#">立即查看></a>
-        <a class="noremind" href="#">X 不再提醒</a>      
-    </div>
-    <!-- /提醒通知条 -->
-    
+       
     <!-- 顶栏1 -->
     <div class="g-top1">
+        <div class="txtarea">
             <p class="edu">EDU</p>
             <p class="divider">|</p>
             <p class="netease">网易教育产品部</p>
@@ -49,7 +51,7 @@
                 </ul>
 
             </div>
-            
+         </div>     
     </div>
     <!-- /顶栏1  -->
     
@@ -68,9 +70,11 @@
         </ul>
     </div>
     <!-- /轮播图 -->
+ 
 
 	 <!-- 顶栏2 -->
     <div class="m-top2">
+        <div class="txtarea">
         <ul>
         <li>
     		<div class="circle"><div class="logo1"></div></div>
@@ -96,19 +100,20 @@
                 <a href="http://www.icourse163.org/" target="_blank">了解更多 ></a>
             </div>
         </li>
-        </ul>           
+        </ul>
+        </div>           
     </div>
     <!-- /顶栏2 -->
 
     <!-- 工作环境图片区 -->
     <div class="workenv">
-        <p><img src="imgs/workenv.jpg"></p>
-       <!-- 
-        <img src="imgs/workenv.jpg"> -->
-   <!--      </div> -->
-        <!-- width="1616px" height="220px"   -->
+        <div class="img"></div>
+       <!--  <p><img src="imgs/workenv.jpg"></p>   -->   
     </div>
      <!-- /工作环境图片区 -->
+
+   
+    <div class="g-doc">
 
 	 <!-- 主内容区 -->
     <div class="m-body">
@@ -375,31 +380,7 @@
   	 <!-- /主内容区 -->
 
 	 <!-- 底栏(TBD) -->
-    <div class="m-bottom">
-        <div class="area1"> 
-            <div class="edu">EDU</div>
-            <div class="netease">| 网易教育产品部</div>   
-            <div class="icp">&copy2014 icourse163.org 浙ICP备08114786号-1</div>
-            <div class="icp">icourses.cn 京ICP备12020869号-2 京公网安备110102000-2</div>
-        </div>        
-        <div class="area2"> 
-            <div class="title">友情链接：</div>
-            <div><a href="">网易公开课</a></div>
-            <div><a href="">网易云课堂</a></div>
-            <div><a href="">中国大学MOOC</a></div>        
-        </div>     
-        <div class="area3"> 
-            <div class="title">我们：</div>
-            <div><a href="">关于</a></div>
-            <div><a href="">联系</a></div>
-            <div><a href="">关注</a></div>        
-        </div>
-        <div class="area4"> 
-            <div class="title">更多：</div>
-            <div><a href="">常见问题</a></div>
-            <div><a href="">意见反馈</a></div>              
-        </div>      
-    </div>
+   
 	 <!-- /底栏 -->
     
     <!-- 登录框 -->
@@ -430,6 +411,33 @@
 
     <div class="mask"></div>
   
+    </div>
+     <div class="m-bottom">
+        <div class="txtarea">
+        <div class="area1"> 
+            <div class="edu">EDU</div>
+            <div class="netease">| 网易教育产品部</div>   
+            <div class="icp">&copy2014 icourse163.org 浙ICP备08114786号-1</div>
+            <div class="icp">icourses.cn 京ICP备12020869号-2 京公网安备110102000-2</div>
+        </div>        
+        <div class="area2"> 
+            <div class="title">友情链接：</div>
+            <div><a href="">网易公开课</a></div>
+            <div><a href="">网易云课堂</a></div>
+            <div><a href="">中国大学MOOC</a></div>        
+        </div>     
+        <div class="area3"> 
+            <div class="title">我们：</div>
+            <div><a href="">关于</a></div>
+            <div><a href="">联系</a></div>
+            <div><a href="">关注</a></div>        
+        </div>
+        <div class="area4"> 
+            <div class="title">更多：</div>
+            <div><a href="">常见问题</a></div>
+            <div><a href="">意见反馈</a></div>              
+        </div>
+        </div>      
     </div>
      <script src='js/util.js'></script>
      <script src='js/md5.js'></script>
@@ -485,8 +493,18 @@
          </ul>
          </script>
 <script type="text/javascript">
-     
-    // var courselist =  document.getElementsByClassName('m-list')[0];
+        
+        var pageNo=1;
+        var type=10;
+        var psize=20;
+    
+        var gdoc = $('.g-doc')[0];
+        var width = window.getComputedStyle(gdoc).getPropertyValue("width")
+        if (width=='960px') {
+            psize=15;
+        }
+
+
         var courselist =  $('.m-hotlist .hotlist')[0];
         var hotlist = $('.m-hotlist .hotlist')[0];
         
@@ -517,9 +535,7 @@
         }
 
         // Tab交互
-        var pageNo=1;
-        var type=10;
-        var psize=20;
+        
 
         $('.m-tab .product')[0].addEventListener("click", function(event) {
             event.preventDefault(); 

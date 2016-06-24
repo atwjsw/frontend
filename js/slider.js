@@ -147,12 +147,16 @@
 
       for(var i =-1; i<= 1; i++){
         var index = (slideIndex + i+3)%3; 
-        var img = slides[index].querySelector('img')
+        // var img = slides[index].querySelector('img')
+        var img = slides[index].querySelector('div')
         if(!img){
-          img = document.createElement('img');
+          img = document.createElement('div');
           slides[index].appendChild(img);
         }
-        img.src = './imgs/banner' + ( this._normIndex(pageIndex + i, this.pageNum)+1 ) + '.jpg';
+        // img.src = './imgs/banner' + ( this._normIndex(pageIndex + i, this.pageNum)+1 ) + '.jpg';     
+      
+        img.style.background='url(./imgs/banner' + ( this._normIndex(pageIndex + i, this.pageNum)+1 ) + '.jpg) 50% 50% no-repeat';
+        img.style.height="100%";
       }
 
       this.emit('nav', {
@@ -310,21 +314,26 @@ var int = 0;
 slider.nav(1);
 
 //点击跳转到相应的URL
-var imgs = $('.m-slide  img');
+var imgs = $('.slide div');
 urls = ["http://open.163.com/", "http://study.163.com/", "http://www.icourse163.org/"];
 
 imgs.forEach(function(img, index) {
   img.addEventListener("click", function(){
-      window.open(urls[img.src.slice(-5,-4)-1]);   
+      window.open(urls[img.style.background.slice(18,19)-1]);   
    })
 });
 
-//鼠标悬停某张图片，则暂停切换；
+//鼠标悬停某张图片，则暂停切换；\
 imgs.forEach(function(img, index) {
   img.addEventListener("mouseenter", function(){
     // alert("mouseover");
       clearInterval(int);
    })
+  
+});
+
+
+imgs.forEach(function(img, index) {  
    img.addEventListener("mouseleave", function(){
         // alert("mouseout");
        int=setInterval(function(){  
