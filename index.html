@@ -1,90 +1,68 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>微专业前端开发作业</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="网易前端开发工程师微专业作业">
-    <style type="text/css">
-    	
-    </style>
+    <meta name="description" content="网易前端开发工程师微专业作业">      
 </head>
-
 <body>
     <!-- 提醒通知条 -->
     <div class="g-notice">
         <div class="txtarea">
-            <p class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</p>
+            <span class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</span>
             <a class="check" href="#">立即查看></a>
-            <a class="noremind" href="#">X 不再提醒</a>
+            <a class="noremind" href="#"><span class="close"></span> 不再提醒</a>
         </div>      
     </div>
     <!-- /提醒通知条 -->	
-    
-    <!-- 视频弹窗 -->
-    <div class="g-video">       
-        <p class="title">请观看下面的视频</p>
-        <div class="close"></div>       
-        <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" poster="imgs/videol.jpg" width="889px" height="538px" controls></video>       
-    </div>   
-    <!-- /视频弹窗 -->
 
-       
     <!-- 顶栏1 -->
     <div class="g-top1">
         <div class="txtarea">
             <p class="edu">EDU</p>
-            <p class="divider">|</p>
+            <p class="divider1">|</p>
             <p class="netease">网易教育产品部</p>
-            <a class="attention"><em>+</em> 关注</a>
-            <div class="attnDone"><span class="tick"></span><span> 已关注 | <a>取消</a></span></div>
-            <p class="fans">粉丝 45</p>
+            <p class="attention"><em>+</em> 关注</p>
+            <div class="attnDone"><span class="tick"></span><span> 已关注 </span><span class="divider2">|</span> <a>取消</a></div>
+            <span class="fans">粉丝 45</span>
             <div class="m-navbar1">
                 <ul>
                     <li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
                     <li><a href="http://study.163.com/" target="_blank">云课堂</a></li>
                     <li><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
-                    <li class="search"><!-- <div class=search></div> --></li>
+                    <li class="search"></li>
                 </ul>
-
             </div>
          </div>     
     </div>
     <!-- /顶栏1  -->
-    
+
     <!-- 轮播图 -->
     <div class="m-slide">
-       <!--  <a href=""><img src="banner1.jpg" alt="banner"></a> -->
-        <ul class="m-cursor">
-        <!--   <li class='prev'><</li> -->
+       <ul class="m-cursor">
           <li class='cursor'></li>
           <li class='cursor'></li>
-          <li class='cursor'></li>
-          <!-- <li class='cursor'>4</li>
-          <li class='cursor'>5</li>
-          <li class='cursor'>6</li> -->
-         <!--  <li class='next'>></li> -->
+          <li class='cursor'></li>         
         </ul>
     </div>
     <!-- /轮播图 -->
  
-
-	 <!-- 顶栏2 -->
-    <div class="m-top2">
+     <!-- 顶栏2 -->
+    <div class="g-top2">
         <div class="txtarea">
         <ul>
         <li>
-    		<div class="circle"><div class="logo1"></div></div>
+            <div class="circle"><div class="logo1"></div></div>
             <div class="txt">
                 <h3>网易公开课</h3>
                 <p>推出国内外名校课程，涉及广泛的学科，名校老师认真讲解深度剖析，网易视频公开课频道搭建起强有力的网络视频教学平台。</p>
                 <a href="http://open.163.com/" target="_blank">了解更多 ></a>
             </div>
-    	</li>
-    	<li>
+        </li>
+        <li>
             <div class="circle"><div class="logo2"></div></div>
             <div class="txt">
                 <h3>云课堂</h3>
@@ -92,7 +70,7 @@
                 <a href="http://study.163.com/" target="_blank">了解更多 ></a>
             </div>
         </li>
-    	<li>
+        <li>
             <div class="circle"><div class="logo3"></div></div>
             <div class="txt">
                 <h3>中国大学MOOC</h3>
@@ -107,153 +85,26 @@
 
     <!-- 工作环境图片区 -->
     <div class="workenv">
-        <div class="img"></div>
-       <!--  <p><img src="imgs/workenv.jpg"></p>   -->   
+        <div class="img"></div>       
     </div>
      <!-- /工作环境图片区 -->
 
-   
-    <div class="g-doc">
-
-	 <!-- 主内容区 -->
+    <!-- 主内容区 -->
     <div class="m-body">
-        
-        <!-- Tab切换 -->
-    	<div class="m-tab">
+        <!-- 课程Tab切换 -->
+        <div class="m-tab">
             <ul>
                 <li class="product z-crt"><a href="">产品设计</a></li>
                 <li class="program"><a href="">编程语言</a></li>
            </ul>
         </div>
-        <!-- /Tab切换 -->
+        <!-- /课程Tab切换 -->
 
         <!-- 课程列表 -->
-        <div class="m-list">
-        12345
-     <!--    <ul>
-            <li>
-                <div class="normal">
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-                </div>
-                 <div class="hover">
-                    <div class="upper">
-                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                        <div class="txt">
-                            <p class="title">手绘画系列</p>                            
-                            <p class="info">57人在学</p>
-                            <p class="provider">发布者：几分钟网</p>
-                            <p class="category">分类：手绘设计</p>                            
-                        </div>
-                    </div>
-                    <div class="lower">
-                         <p>                        
-                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
-                        </p>           
-                    </div>
-                </div>
-            </li>          
-           <li>
-                <div class="normal">
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-                </div>
-                 <div class="hover">
-                    <div class="upper">
-                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                        <div class="txt">
-                            <p class="title">手绘画系列</p>                            
-                            <p class="info">57人在学</p>
-                            <p class="provider">发布者：几分钟网</p>
-                            <p class="category">分类：手绘设计</p>                            
-                        </div>
-                    </div>
-                    <div class="lower">
-                         <p>                        
-                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
-                        </p>           
-                    </div>
-                </div>
-            </li>          
-           <li>
-                <div class="normal">
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-                </div>
-                 <div class="hover">
-                    <div class="upper">
-                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                        <div class="txt">
-                            <p class="title">手绘画系列</p>                            
-                            <p class="info">57人在学</p>
-                            <p class="provider">发布者：几分钟网</p>
-                            <p class="category">分类：手绘设计</p>                            
-                        </div>
-                    </div>
-                    <div class="lower">
-                         <p>                        
-                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
-                        </p>           
-                    </div>
-                </div>
-            </li>          
-           <li>
-                <div class="normal">
-                <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                <p class="title">混音全揭秘 舞曲实战篇 揭秘揭秘揭秘揭秘揭秘揭秘揭秘揭秘</p>
-                <p class="author">音频帮</p>
-                <p class="fans">510</p>
-                <p class="price">￥800.00</p>
-                </div>
-                 <div class="hover">
-                    <div class="upper">
-                        <a href=""><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" width="223px" height="124px" alt="电台名称"></a>
-                        <div class="txt">
-                            <p class="title">手绘画系列</p>                            
-                            <p class="info">57人在学</p>
-                            <p class="provider">发布者：几分钟网</p>
-                            <p class="category">分类：手绘设计</p>                            
-                        </div>
-                    </div>
-                    <div class="lower">
-                         <p>                        
-                        生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来生活中不乏美味的画面，何不拿起画笔把它画下来，生活中不乏美味的画面，何不拿起画笔把它画下来
-                        </p>           
-                    </div>
-                </div>
-            </li>          
-                   
-        </ul>  -->
-    </div> 
-    <!-- /课程列表 -->
+        <div class="m-list">     
+        </div> 
+        <!-- /课程列表 -->
 
-    <!-- 翻页器 -->
-    <div class="m-page">
-              <!-- <a class="btn s" href="#">首页</a> -->
-              <span class="prev" href="#"><</span>
-              <span class="pgi z-crt" href="#">1</span>
-              <span class="pgi" href="#">2</span>
-              <span class="pgi" href="#">3</span>
-              <span class="pgi" href="#">4</span>
-              <span class="pgi" href="#">5</span>
-              <span class="pgi" href="#">6</span>
-              <span class="pgi" href="#">7</span>
-              <span class="pgi" href="#">8</span>
-              <span class="next" href="#">></span>
-              <!-- <a class="btn e" href="#">尾页</a> -->
-    </div>
-
-   
-    
         <!-- 机构介绍 -->
         <div class="m-introduction">
             <div class="title">机构介绍</div>
@@ -267,151 +118,38 @@
         </div>
         <!-- /机构介绍 -->
 
-        <!-- 热门推荐 -->
+         <!-- 热门推荐 -->
         <div class="m-hotlist">
             <div class="title">最热排行</div>
-            <div class="hotlist">
-          <!--   <ul>
-                <li>
-                    <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                     <a href="" class="img"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称" width="50px" height="50px"></a>
-                    <div class="txt">
-                        <h3><a href="">舞曲解谜 舞曲解谜舞曲解谜舞曲解谜</a></h3>
-                        <div class="info">
-                            <i class="vip"></i>
-                            <p>21576</p>
-                        </div>
-                    </div>
-                </li>
-            </ul> -->
-            </div>
+            <div class="hotlist"></div>
         </div>
-        <!-- /热门推荐 -->        
-    </div>
-  	 <!-- /主内容区 -->
+        <!-- /热门推荐 -->   
 
-	 <!-- 底栏(TBD) -->
+        <!-- 视频弹窗 -->
+        <div class="g-video">       
+            <p class="title">请观看下面的视频</p>
+            <div class="close"></div>       
+            <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" poster="imgs/videol.jpg" width="889px" height="538px" controls></video>       
+        </div>   
+        <!-- /视频弹窗 -->
+
+         <!-- 翻页器 -->
+        <div class="m-page">          
+              <span class="prev" href="#"><</span>
+              <span class="pgi z-crt" href="#">1</span>
+              <span class="pgi" href="#">2</span>
+              <span class="pgi" href="#">3</span>
+              <span class="pgi" href="#">4</span>
+              <span class="pgi" href="#">5</span>
+              <span class="pgi" href="#">6</span>
+              <span class="pgi" href="#">7</span>
+              <span class="pgi" href="#">8</span>
+              <span class="next" href="#">></span>             
+        </div>            
+    </div>
+    <!-- /主内容区 -->     
    
-	 <!-- /底栏 -->
-    
-    <!-- 登录框 -->
-   <!--  <div class="login"> -->
-        <form action="/login" class="m-form" name="loginForm" autocomplete="off">
-        <!-- target="result"  -->
-          <legend>登录网易云课堂</legend>
-          <fieldset>
-            <div class="msg" id="message"></div>
-            <div>
-             <!--  <label for="telephone">手机号：</label> -->
-              <input id="userName" name="userName" type="text" class="u-txt" maxlength="30" placeholder="账号"
-                     required>
-             <!--  <span class="tip">11位数字手机号码</span> -->
-            </div>
-            <div>
-             <!--  <label for="password">密　码：</label> -->
-              <input id="password" name="password" type="password" class="u-txt" placeholder="密码" required>
-              <!-- <span class="tip">至少6位，同时包含数字和字母</span> -->
-            </div>
-            <div><button name="loginBtn">登 录</button></div>
-          </fieldset>
-          <div class="close"></div>
-        </form>
-   <!--/ 登录框 -->
-
-
-
-    <div class="mask"></div>
-  
-    </div>
+    <!-- 底栏 -->
      <div class="m-bottom">
         <div class="txtarea">
         <div class="area1"> 
@@ -422,15 +160,15 @@
         </div>        
         <div class="area2"> 
             <div class="title">友情链接：</div>
-            <div><a href="">网易公开课</a></div>
-            <div><a href="">网易云课堂</a></div>
-            <div><a href="">中国大学MOOC</a></div>        
+            <div><a href="http://open.163.com/" target="_blank">网易公开课</a></div>
+            <div><a href="http://study.163.com/" target="_blank">网易云课堂</a></div>
+            <div><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></div>        
         </div>     
         <div class="area3"> 
             <div class="title">我们：</div>
             <div><a href="">关于</a></div>
             <div><a href="">联系</a></div>
-            <div><a href="">关注</a></div>        
+            <div><a href="">关注</a><span class="weibo"></span></div>        
         </div>
         <div class="area4"> 
             <div class="title">更多：</div>
@@ -439,12 +177,38 @@
         </div>
         </div>      
     </div>
-     <script src='js/util.js'></script>
-     <script src='js/md5.js'></script>
-     <script src='js/trimpath.js'></script>
-     <script src='js/slider.js'></script>
-     <script src='js/login.js'></script>
-     <!-- <script src='js/courselist.js'></script> -->
+    <!-- /底栏 -->
+
+    <!-- 登录框 -->  
+        <form action="/login" class="m-form" name="loginForm" autocomplete="off">
+        <!-- target="result"  -->
+          <legend>登录网易云课堂</legend>
+          <fieldset>
+            <div class="msg" id="message"></div>
+            <div>
+                <input id="userName" name="userName" type="text" class="u-txt" maxlength="30" placeholder="账号"
+                     required>
+            </div>
+            <div>           
+              <input id="password" name="password" type="password" class="u-txt" placeholder="密码" required>    
+            </div>
+            <div><button name="loginBtn">登 录</button></div>
+          </fieldset>
+          <div class="close"></div>
+        </form>
+    <!--/ 登录框 -->
+
+    <!-- 遮罩 --> 
+    <div class="mask"></div>
+    <!-- /遮罩 --> 
+  
+<script src='js/util.js'></script>
+<script src='js/md5.js'></script>
+<script src='js/trimpath.js'></script>
+<script src='js/slider.js'></script>
+<script src='js/login.js'></script>
+
+<!-- 热门课程列表 -->  
 <script type="text/template" id="hotlist">
     <ul>
         {list courselist as hotcourse}
@@ -459,14 +223,15 @@
          {/list}
     </ul>
 </script>
+<!-- /热门课程列表 -->
 
-<script type="text/template" id="track-list">
-  
+<!-- 课程列表 -->  
+<script type="text/template" id="track-list">  
          <ul>
         {list courselist as track}
           <li>  
                 <div class="normal">
-                    <a href=""><img src="${track.middlePhotoUrl}" width="223px" height="124px" alt="电台名称"></a>
+                    <a href=""><img src="${track.middlePhotoUrl}" width="225px" height="124px" alt="课程图片"></a>
                     <p class="title">${track.name}</p> 
                     <p class="author">${track.provider}</p>
                     <p class="fans">${track.learnerCount}</p>
@@ -474,7 +239,7 @@
                 </div>
                 <div class="hover">
                     <div class="upper">
-                    <a href=""><img src="${track.bigPhotoUrl}" width="223px" height="124px" alt="电台名称"></a>
+                    <a href=""><img src="${track.bigPhotoUrl}" width="225px" height="124px" alt="课程图片"></a>
                         <div class="txt">
                             <p class="title">${track.name}</p>                            
                             <p class="info">${track.learnerCount}人在学</p>
@@ -483,27 +248,25 @@
                         </div>
                     </div>
                     <div class="lower">
-                         <p>                        
-                       ${track.description}
-                        </p>           
+                         <p>${track.description}</p>           
                     </div>
                 </div>                
            </li>           
          {/list}
          </ul>
-         </script>
-<script type="text/javascript">
-        
+</script>
+<!-- /课程列表 -->  
+
+<script type="text/javascript">        
         var pageNo=1;
         var type=10;
         var psize=20;
     
-        var gdoc = $('.g-doc')[0];
+        var gdoc = $('.m-body')[0];
         var width = window.getComputedStyle(gdoc).getPropertyValue("width")
         if (width=='960px') {
             psize=15;
         }
-
 
         var courselist =  $('.m-hotlist .hotlist')[0];
         var hotlist = $('.m-hotlist .hotlist')[0];
@@ -534,8 +297,7 @@
              parent.insertAdjacentHTML('afterBegin',html);
         }
 
-        // Tab交互
-        
+        // Tab交互      
 
         $('.m-tab .product')[0].addEventListener("click", function(event) {
             event.preventDefault(); 
@@ -631,29 +393,48 @@
       get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:10 }, callback1); 
     });
     
-     
-   
+    
+    pageIndexes = $('.m-page .pgi');
+    var prev = $('.m-page .prev')[0];
+    var next = $('.m-page .next')[0];
     var currentPage=1;
-    //翻页器交互
+    addClickHandler(pageIndexes);
+    
+    //翻页器交互, 点击页码翻页
       function addClickHandler(nodes) {
         function helper(i) {
-
-           return function(){
-                // alert(i+1); 
+           return function(){          
                 util.delClass($('.m-page .z-crt')[0],"z-crt");
-                var pageNo = parseInt(i+1);
-                get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:pageNo, psize:psize, type:type }, callback1); 
-                util.addClass(nodes[i],"z-crt");
-
+                currentPage = i+1;                
+                get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, callback1); 
+                util.addClass(nodes[i],"z-crt");              
        }
     }
         for (var i=0;i<nodes.length;i++) {
             nodes[i].addEventListener("click", helper(i));            
         }
     }
-    
-    var i = addClickHandler($('.m-page .pgi'));  
+        
          
+     //翻页器交互, 点击向前、向后键翻页
+    prev.addEventListener("click", function() {        
+        // alert("prev" + currentPage);
+        if (currentPage>1) {           
+            currentPage=currentPage-1;
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, callback1); 
+            util.delClass(pageIndexes[currentPage],"z-crt");
+            util.addClass(pageIndexes[currentPage-1],"z-crt");
+        }
+    }) 
+    
+    next.addEventListener("click", function() {
+        if (currentPage<8) {           
+            currentPage=currentPage+1;
+            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, callback1); 
+            util.delClass(pageIndexes[currentPage-2],"z-crt");
+            util.addClass(pageIndexes[currentPage-1],"z-crt");
+        }
+    }) 
 
 </script>
     

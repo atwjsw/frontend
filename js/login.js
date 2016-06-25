@@ -40,17 +40,17 @@ function serialize(data) {
 
 function callback(data) {
     if (data == 1) {
-        alert("loing suc " + data);
+        // alert("loing suc " + data);
         $('.m-form')[0].style.display = "none";
         $('.mask')[0].style.display = "none";
-        $('.g-top1 a.attention')[0].style.display = "none";
+        $('.g-top1 .attention')[0].style.display = "none";
         $('.g-top1 .attnDone')[0].style.display = "inline-block";
         setCookie("loginSuc", "true", 30);
     } else if (data == 0) {
-        alert("login failure " + data);
+        // alert("login failure " + data);
         showMessage('j-err', '登录错误，请重新尝试。');
     } else {
-        alert("login failure " + data);
+        // alert("login failure " + data);
         showMessage('j-err', '系统出错，请稍后再尝试。');
     }
 }
@@ -82,7 +82,7 @@ if (getCookie("reminder") == "false") {
 }
 
 $('.g-top1 .attnDone a')[0].addEventListener("click", function() {
-    $('.g-top1 a.attention')[0].style.display = "inline-block";
+    $('.g-top1 .attention')[0].style.display = "inline-block";
     $('.g-top1 .attnDone')[0].style.display = "none";
     removeCookie("loginSuc");
     return false;
@@ -90,11 +90,13 @@ $('.g-top1 .attnDone a')[0].addEventListener("click", function() {
 
 //关注按钮交互
 if (getCookie('loginSuc') == "true") {
-    $('.g-top1 a.attention')[0].style.display = "none";
+    $('.g-top1 .attention')[0].style.display = "none";
     $('.g-top1 .attnDone')[0].style.display = "inline-block";
+} else {
+    $('.g-top1 .attention')[0].style.display = "inline-block";
 }
 
-$('.g-top1 a.attention')[0].addEventListener("click", function() {
+$('.g-top1 .attention')[0].addEventListener("click", function() {
     $('.m-form')[0].style.display = "block";
     $('.mask')[0].style.display = "block";   
 });
