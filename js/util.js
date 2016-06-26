@@ -24,13 +24,18 @@
      }
  }
 
- // Function.prototype.method = function(name, func) {
+ // if (!window.getComputedStyle) {
+ //     window.getComputedStyle = function(e) {
+ //         return e.currentStyle };
+ // }
 
- //     this.prototype[name] = func;
-
- //     return this;
-
- // };
+ getStyle = function (el, prop) {
+    if (window.getComputedStyle) {
+        return window.getComputedStyle(el).getPropertyValue(prop);
+    } else {
+        return el.currentStyle[prop];
+    }
+}
 
  if (!String.prototype.trim) {
      String.prototype.trim = function() {

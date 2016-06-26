@@ -120,6 +120,7 @@
         .m-body .m-introduction {position: absolute; width:223px; height:230px; top:84px; right: 1px; border:1px solid #ecebeb;}
         .m-body .m-introduction .title{font:16px/66px "微软雅黑"; border-bottom:1px solid #ecebeb; text-indent: 20px;}
         .m-body .m-introduction .video{font:16px/30px "微软雅黑"; margin-left: 20px; }
+        .m-body .m-introduction img{cursor:pointer;}
 
          /*主内容区 -最热排行*/
         .m-body .m-hotlist {position: absolute; width:223px; height:778px; top:334px; right: 1px; border:1px solid #ecebeb; }

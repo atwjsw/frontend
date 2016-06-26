@@ -6,7 +6,9 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="网易前端开发工程师微专业作业">      
+    <meta name="description" content="网易前端开发工程师微专业作业">
+ 
+ 
 </head>
 <body>
     <!-- 提醒通知条 -->
@@ -110,10 +112,12 @@
             <div class="title">机构介绍</div>
             <div class="video">
                 <p>观看下面的视频了解吧:</p>
-                <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" poster="imgs/videos.jpg" width="180px" height="110px">
+                <img src="imgs/videos.jpg" width="180px" height="110px"></img>
+
+               <!--  <video  id="example_video_1" class="video-js vjs-default-skin" controls preload="none" src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" poster= width="180px" height="110px">
                     <source src="movie.mp4" type="video/mp4">
                     <source src="movie.ogg" type="video/ogg">
-                </video>
+                </video> -->
             </div>
         </div>
         <!-- /机构介绍 -->
@@ -209,6 +213,7 @@
 <script src='js/slider.js'></script>
 <script src='js/login.js'></script>
 
+
 <!-- 热门课程列表 -->  
 <script type="text/template" id="hotlist">
     <ul>
@@ -258,22 +263,6 @@
 </script>
 <!-- /课程列表 --> 
 
-
-<!-- [if lt IE9]> --> 
-<script> 
-   (function() {
-     if (! 
-     /*@cc_on!@*/
-     0) return;
-     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
-     var i= e.length;
-     while (i--){
-         document.createElement(e[i])
-     } 
-})() 
-</script>
-<!-- <![endif]  -->
-
 <script type="text/javascript">
         
 
@@ -283,7 +272,8 @@
         var psize=20;
     
         var gdoc = $('.m-body')[0];
-        var width = window.getComputedStyle(gdoc).getPropertyValue("width")
+        // var width = window.getComputedStyle(gdoc).getPropertyValue("width");
+        var width = getStyle(gdoc, "width");    
         if (width=='960px') {
             psize=15;
         }
@@ -292,11 +282,13 @@
         var hotlist = $('.m-hotlist .hotlist')[0];
         
          var tplContent = TrimPath.parse(
-           document.getElementById('track-list').textContent
+           // document.getElementById('track-list').textContent
+           document.getElementById('track-list').innerHTML
         );
 
         var hotListContent = TrimPath.parse(
-            document.getElementById('hotlist').textContent
+            // document.getElementById('hotlist').textContent
+            document.getElementById('hotlist').innerHTML
         );
    
         function render(parent,list,template){
@@ -320,7 +312,8 @@
         // Tab交互      
 
         addEvent($('.m-tab .product')[0], "click", function(event) {
-            event.preventDefault(); 
+            // event.preventDefault(); 
+            event.preventDefault ? event.preventDefault() : (event.returnValue = false);
             type=10;           
             makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:type}, "GET", processCourselist); 
             $('.m-tab .program')[0].style.backgroundColor="white";
@@ -348,7 +341,7 @@
          function processCourselist(data) {            
             var arr = JSON.parse(data).list;
             var courselist =  $('.m-list')[0];
-            $('.m-list')[0].textContent="";            
+            $('.m-list')[0].innerHTML="";            
             render(courselist, arr, tplContent);  
             addMouseoverHandler($('.m-list div.normal'));  
             addMouseoutHandler($('.m-list div.hover'));         
@@ -356,10 +349,11 @@
 
          function processHotlist(data) {    
             var arr = JSON.parse(data); 
-                    $('.m-hotlist .hotlist')[0].textContent=""; 
+                    // $('.m-hotlist .hotlist')[0].textContent=""; 
+                    $('.m-hotlist .hotlist')[0].innerHTML=""; 
                     render(hotlist, arr.slice(0,10), hotListContent); 
-                setInterval(function(){
-                    $('.m-hotlist .hotlist')[0].textContent=""; 
+                    setInterval(function(){
+                    $('.m-hotlist .hotlist')[0].innerHTML=""; 
                     render(hotlist, arr.slice(0,10), hotListContent);
                     var firstItem = arr.shift();                
                     arr.push(firstItem);

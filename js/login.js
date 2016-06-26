@@ -195,10 +195,9 @@ addEvent(form,
 
 
 //视频弹窗交互
-
 var video = $('.g-video video')[0];
 
-addEvent($('.m-introduction video')[0], "click", function() {
+addEvent($('.m-introduction img')[0], "click", function() {
     $('.g-video')[0].style.display = "block";
     $('.mask')[0].style.display = "block";
     // $('.g-video video')[0].style.display = "block";
@@ -211,4 +210,3 @@ addEvent($('.g-video .close')[0], "click", function() {
     $('.g-video')[0].style.display = "none";
     $('.mask')[0].style.display = "none";   
 });
-
