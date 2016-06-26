@@ -1,6 +1,7 @@
 //AJAX请求操作
+/*
 function get(url, options, callback) {
-    var xhr = new XMLHttpRequest();
+    var xhr = createCORSRequest("get", url);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
@@ -14,7 +15,8 @@ function get(url, options, callback) {
     var URL = url + "?" + serialize(options);
     // alert(URL);
     xhr.open('get', URL, true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.contentType='application/x-www-form-urlencoded';
     xhr.send(null);
 }
 
@@ -37,8 +39,8 @@ function serialize(data) {
     }
     return pairs.join('&');
 }
-
-function callback(data) {
+*/
+function handleLogin(data) {
     if (data == 1) {
         // alert("loing suc " + data);
         $('.m-form')[0].style.display = "none";
@@ -81,7 +83,7 @@ if (getCookie("reminder") == "false") {
     $('.g-notice')[0].style.display = "none";
 }
 
-$('.g-top1 .attnDone a')[0].addEventListener("click", function() {
+addEvent($('.g-top1 .attnDone a')[0],"click", function() {
     $('.g-top1 .attention')[0].style.display = "inline-block";
     $('.g-top1 .attnDone')[0].style.display = "none";
     removeCookie("loginSuc");
@@ -96,19 +98,19 @@ if (getCookie('loginSuc') == "true") {
     $('.g-top1 .attention')[0].style.display = "inline-block";
 }
 
-$('.g-top1 .attention')[0].addEventListener("click", function() {
+addEvent($('.g-top1 .attention')[0], "click", function() {
     $('.m-form')[0].style.display = "block";
     $('.mask')[0].style.display = "block";   
 });
 
-$('.g-notice a.noremind')[0].addEventListener("click", function() {
+addEvent($('.g-notice a.noremind')[0],"click", function() {
     setCookie("reminder", "false", 30);
     $('.g-notice')[0].style.display = "none";
     return false;
 });
 
 // 关闭登录框
-$('.m-form .close')[0].addEventListener("click", function() {
+addEvent($('.m-form .close')[0],"click", function() {
     $('.m-form')[0].style.display = "none";
     $('.mask')[0].style.display = "none";      
 });
@@ -147,7 +149,7 @@ function clearInvalid(node) {
     node.classList.remove('j-error');
 }
 
-form.userName.addEventListener(
+addEvent(form.userName,
     'invalid',
     function(event) {
         event.preventDefault();
@@ -156,7 +158,7 @@ form.userName.addEventListener(
     }
 );
 
-form.password.addEventListener(
+addEvent(form.password,
     'invalid',
     function(event) {
         event.preventDefault();
@@ -165,7 +167,7 @@ form.password.addEventListener(
     }
 );
 
-form.addEventListener(
+addEvent(form,
     'input',
     function(event) {
         // 还原错误状态
@@ -174,27 +176,36 @@ form.addEventListener(
         disableSubmit(false);
     }
 );
-form.addEventListener(
+
+
+ // var options ={userName: md5("studyOnline"), password: md5("study.163.com")};
+ // var url = 'http://study.163.com/webDev/login.htm';
+ // var returnText = makeCorsRequest(url, options, "GET");
+ //    alert('Response from CORS request to ' + url + ': ' + returnText);  
+
+addEvent(form,
     'submit',
     function(event) {
         event.preventDefault();
-        get("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, callback);
+        var responseText = makeCorsRequest("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, "GET", handleLogin);       
     });
 
+
+   
 
 
 //视频弹窗交互
 
 var video = $('.g-video video')[0];
 
-$('.m-introduction video')[0].addEventListener("click", function() {
+addEvent($('.m-introduction video')[0], "click", function() {
     $('.g-video')[0].style.display = "block";
     $('.mask')[0].style.display = "block";
     // $('.g-video video')[0].style.display = "block";
     $('.g-video')[0].appendChild(video);
 });
 
-$('.g-video .close')[0].addEventListener("click", function() {
+addEvent($('.g-video .close')[0], "click", function() {
     $('.g-video')[0].removeChild(video);
     // $('.g-video video')[0].style.display = "none";
     $('.g-video')[0].style.display = "none";

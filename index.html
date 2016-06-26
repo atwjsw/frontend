@@ -203,6 +203,7 @@
     <!-- /遮罩 --> 
   
 <script src='js/util.js'></script>
+<script src='js/ajax.js'></script>
 <script src='js/md5.js'></script>
 <script src='js/trimpath.js'></script>
 <script src='js/slider.js'></script>
@@ -255,9 +256,28 @@
          {/list}
          </ul>
 </script>
-<!-- /课程列表 -->  
+<!-- /课程列表 --> 
 
-<script type="text/javascript">        
+
+<!-- [if lt IE9]> --> 
+<script> 
+   (function() {
+     if (! 
+     /*@cc_on!@*/
+     0) return;
+     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+     var i= e.length;
+     while (i--){
+         document.createElement(e[i])
+     } 
+})() 
+</script>
+<!-- <![endif]  -->
+
+<script type="text/javascript">
+        
+
+
         var pageNo=1;
         var type=10;
         var psize=20;
@@ -299,10 +319,10 @@
 
         // Tab交互      
 
-        $('.m-tab .product')[0].addEventListener("click", function(event) {
+        addEvent($('.m-tab .product')[0], "click", function(event) {
             event.preventDefault(); 
             type=10;           
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:type}, callback1); 
+            makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:type}, "GET", processCourselist); 
             $('.m-tab .program')[0].style.backgroundColor="white";
             $('.m-tab .program a')[0].style.color="#666" ; 
             $('.m-tab .product')[0].style.backgroundColor="#39a030";
@@ -312,10 +332,10 @@
             return false;
         });
 
-        $('.m-tab .program')[0].addEventListener("click", function(event) {
+        addEvent($('.m-tab .program')[0], "click", function(event) {
             event.preventDefault();
             type=20;
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:type}, callback1); 
+            makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:type}, "GET", processCourselist); 
             $('.m-tab .program')[0].style.backgroundColor="#39a030";
             $('.m-tab .program a')[0].style.color="white" ; 
             $('.m-tab .product')[0].style.backgroundColor="white";
@@ -325,7 +345,7 @@
             return false;
         });
         
-         function callback1(data) {            
+         function processCourselist(data) {            
             var arr = JSON.parse(data).list;
             var courselist =  $('.m-list')[0];
             $('.m-list')[0].textContent="";            
@@ -334,7 +354,7 @@
             addMouseoutHandler($('.m-list div.hover'));         
          }
 
-         function callback2(data) {    
+         function processHotlist(data) {    
             var arr = JSON.parse(data); 
                     $('.m-hotlist .hotlist')[0].textContent=""; 
                     render(hotlist, arr.slice(0,10), hotListContent); 
@@ -371,7 +391,7 @@
 
         for (var i=0;i<nodes.length;i++) {
             // alert(i);
-            nodes[i].addEventListener("mouseenter", helper(i))
+            addEvent(nodes[i],"mouseenter", helper(i))
         }
     }
 
@@ -382,15 +402,15 @@
                 }          
            }  
         for (var i=0;i<nodes.length;i++) {
-            nodes[i].addEventListener("mouseleave", helper(i))
+            addEvent(nodes[i], "mouseleave", helper(i))
         }
     }
            
     // 热门课程列表
 
-    window.addEventListener("load", function() {
-      get("http://study.163.com/webDev/hotcouresByCategory.htm", {}, callback2);  
-      get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:10 }, callback1); 
+    addEvent(window, "load", function() {
+      makeCorsRequest("http://study.163.com/webDev/hotcouresByCategory.htm", {},  "GET", processHotlist);  
+      makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:10 },  "GET" ,processCourselist); 
     });
     
     
@@ -399,46 +419,43 @@
     var next = $('.m-page .next')[0];
     var currentPage=1;
     addClickHandler(pageIndexes);
-    
+
     //翻页器交互, 点击页码翻页
       function addClickHandler(nodes) {
         function helper(i) {
            return function(){          
                 util.delClass($('.m-page .z-crt')[0],"z-crt");
                 currentPage = i+1;                
-                get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, callback1); 
+                makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type },"GET",processCourselist); 
                 util.addClass(nodes[i],"z-crt");              
        }
     }
         for (var i=0;i<nodes.length;i++) {
-            nodes[i].addEventListener("click", helper(i));            
+            addEvent(nodes[i],"click", helper(i));            
         }
     }
         
          
      //翻页器交互, 点击向前、向后键翻页
-    prev.addEventListener("click", function() {        
+    addEvent(prev, "click", function() {        
         // alert("prev" + currentPage);
         if (currentPage>1) {           
             currentPage=currentPage-1;
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, callback1); 
+            makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, "GET", processCourselist); 
             util.delClass(pageIndexes[currentPage],"z-crt");
             util.addClass(pageIndexes[currentPage-1],"z-crt");
         }
     }) 
     
-    next.addEventListener("click", function() {
+    addEvent(next, "click", function() {
         if (currentPage<8) {           
             currentPage=currentPage+1;
-            get("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, callback1); 
+            makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:currentPage, psize:psize, type:type }, "GET",processCourselist); 
             util.delClass(pageIndexes[currentPage-2],"z-crt");
             util.addClass(pageIndexes[currentPage-1],"z-crt");
         }
     }) 
 
-</script>
-    
-
+</script>   
 </body>
-
 </html>

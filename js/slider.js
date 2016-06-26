@@ -43,7 +43,9 @@
 
     // 组件节点
     this.slider = this._layout.cloneNode(true);
-    this.slides = [].slice.call(this.slider.querySelectorAll('.slide'));
+    // this.slides = [].slice.call(this.slider.querySelectorAll('.slide'));
+    this.slides = Array.prototype.concat.apply([],this.slider.querySelectorAll('.slide')).slice()
+    // this.slides = $('m-slide .slide');
 
     // 拖拽相关
     this.offsetWidth = this.container.offsetWidth;
@@ -171,62 +173,62 @@
   //   // 拖动相关, 有兴趣的同学
   //   // ----------
 
-    _initDrag: function(){
+    // _initDrag: function(){
 
-      this._dragInfo = {};
-      this.slider.addEventListener('mousedown', this._dragstart.bind(this));
-      this.slider.addEventListener('mousemove', this._dragmove.bind(this));
-      this.slider.addEventListener('mouseup', this._dragend.bind(this));
-      this.slider.addEventListener('mouseleave', this._dragend.bind(this));
-    },
+    //   this._dragInfo = {};
+    //   addEvent(this.slider,'mousedown', this._dragstart.bind(this));
+    //   addEvent(this.slider,'mousemove', this._dragmove.bind(this));
+    //   addEvent(this.slider,'mouseup', this._dragend.bind(this));
+    //   addEvent(this.slider,'mouseleave', this._dragend.bind(this));
+    // },
 
-    _dragstart: function(ev){
-      var dragInfo = this._dragInfo;
-      dragInfo.start = {x: ev.pageX, y: ev.pageY};
-    },
+    // _dragstart: function(ev){
+    //   var dragInfo = this._dragInfo;
+    //   dragInfo.start = {x: ev.pageX, y: ev.pageY};
+    // },
 
-    _dragmove: function(ev){
+    // _dragmove: function(ev){
 
-      var dragInfo = this._dragInfo;
-      // 如果还没有开始拖拽则退出
-      if(!dragInfo.start) return;
+    //   var dragInfo = this._dragInfo;
+    //   // 如果还没有开始拖拽则退出
+    //   if(!dragInfo.start) return;
 
-      ev.preventDefault();
-      this.slider.style.transitionDuration = '0s';
+    //   ev.preventDefault();
+    //   this.slider.style.transitionDuration = '0s';
 
-      var start = dragInfo.start;
-      // 清除恼人的选区
-      if (window.getSelection) {
-        window.getSelection().removeAllRanges();
-      } else if (window.document.selection) {
-        window.document.selection.empty();
-      }
+    //   var start = dragInfo.start;
+    //   // 清除恼人的选区
+    //   if (window.getSelection) {
+    //     window.getSelection().removeAllRanges();
+    //   } else if (window.document.selection) {
+    //     window.document.selection.empty();
+    //   }
 
-      // 加translateZ 分量是为了触发硬件加速
-      this.slider.style.transform = 
-       'translateX(' +  (-(this.offsetWidth * this.offsetAll - ev.pageX+start.x)) + 'px) translateZ(0)'
+    //   // 加translateZ 分量是为了触发硬件加速
+    //   this.slider.style.transform = 
+    //    'translateX(' +  (-(this.offsetWidth * this.offsetAll - ev.pageX+start.x)) + 'px) translateZ(0)'
 
-    },
+    // },
 
-    _dragend: function( ev ){
+    // _dragend: function( ev ){
 
-      var dragInfo = this._dragInfo;
-      if(!dragInfo.start) return;
+    //   var dragInfo = this._dragInfo;
+    //   if(!dragInfo.start) return;
 
-      ev.preventDefault();
-      var start = dragInfo.start;
-      this._dragInfo = {};
-      var pageX = ev.pageX;
+    //   ev.preventDefault();
+    //   var start = dragInfo.start;
+    //   this._dragInfo = {};
+    //   var pageX = ev.pageX;
 
-      // 看走了多少距离
-      var deltX = pageX - start.x;
-      if( Math.abs(deltX) > this.breakPoint ){
-        this._step(deltX>0? -1: 1)
-      }else{
-        this._step(0)
-      }
+    //   // 看走了多少距离
+    //   var deltX = pageX - start.x;
+    //   if( Math.abs(deltX) > this.breakPoint ){
+    //     this._step(deltX>0? -1: 1)
+    //   }else{
+    //     this._step(0)
+    //   }
 
-    }
+    // }
 
     
   })
@@ -245,8 +247,11 @@ var cursors = $('.m-cursor .cursor');
 // var prev = $('.m-cursor .prev')[0];
 // var next = $('.m-cursor .next')[0];
 
+
+
+
 cursors.forEach(function(cursor, index){
-  cursor.addEventListener('click', function(){
+  addEvent(cursor,'click', function(){
     slider.nav(index);
   })
 })
@@ -268,7 +273,7 @@ cursors.forEach(function(cursor, index){
 
 var slider = new Slider({
   //视口容器
-  container: document.getElementsByClassName("m-slide")[0],
+  container: $(".m-slide")[0],
   // 图片列表
   images: [
     "./imgs/banner1.jpg",
@@ -280,7 +285,7 @@ var slider = new Slider({
   ],
 
   // 是否允许拖拽
-  drag: true
+  drag: false
 });
 
 // 通过监听`nav`事件来完成额外逻辑
@@ -318,14 +323,14 @@ var imgs = $('.slide div');
 urls = ["http://open.163.com/", "http://study.163.com/", "http://www.icourse163.org/"];
 
 imgs.forEach(function(img, index) {
-  img.addEventListener("click", function(){
+  addEvent(img,"click", function(){
       window.open(urls[img.style.background.slice(18,19)-1]);   
    })
 });
 
 //鼠标悬停某张图片，则暂停切换；\
 imgs.forEach(function(img, index) {
-  img.addEventListener("mouseenter", function(){
+  addEvent(img,"mouseenter", function(){
     // alert("mouseover");
       clearInterval(int);
    })
@@ -334,7 +339,7 @@ imgs.forEach(function(img, index) {
 
 
 imgs.forEach(function(img, index) {  
-   img.addEventListener("mouseleave", function(){
+   addEvent(img,"mouseleave", function(){
         // alert("mouseout");
        int=setInterval(function(){  
     // 下一页
