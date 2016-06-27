@@ -127,7 +127,7 @@
 
       // 容器偏移
       this.slider.style.transform = 'translateX('+ (-offsetAll * 100)+'%) translateZ(0)'
-
+      this.slider.style.msTransform = 'translateX('+ (-offsetAll * 100)+'%)'
 
       // 当前slide 添加 'z-active'的className
       slides.forEach(function(node){ _.delClass(node, 'z-active') })
