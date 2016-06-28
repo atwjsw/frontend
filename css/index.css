@@ -36,7 +36,7 @@
          /*登录框*/
         .m-form{position:fixed; margin:auto; left:0; top:0; right:0; bottom:0; display:none;}    
         .m-form{width: 387px; height: 289px; background-color:white;z-index:999;}
-        .m-form legend {margin-left: 40px; margin-top:30px; margin-bottom: 5px; font:bold 18px "微软雅黑"; color:#444;}
+        .m-form .legend {margin-left: 40px; margin-top:30px; margin-bottom: 5px; font:bold 18px "微软雅黑"; color:#444;}
         .m-form .u-txt {margin-left: 40px; margin-top:15px;width:282px; height:44px; font:16px "微软雅黑"; border:1px solid #dfdfdf; line-height: 44px; box-shadow: 2px 2px 2px #f1f1f1 inset; padding-left: 11px;} /*border:1px solid #f1f1f1;*/
         .m-form button{width: 293px;height: 46px; margin-left: 40px; margin-top:29px; color:#fff;cursor:pointer;background-color: #189f36;font:bold 16px "微软雅黑"; box-shadow:2px 2px #d5e3da; border:none;}
         .m-form .msg{margin-left:40px; margin-bottom:-15px;display:none;font:14px "微软雅黑";}
@@ -50,10 +50,21 @@
 
         /*遮罩*/
         .mask{position:fixed;top:0;left:0;z-index:998;width:100%;height:100%;background-color:#000;opacity:0.7; display:none;}
+        .mask{filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);}
 
         /*轮播图*/
-        .m-slide{position:relative;width:100%;height:460px;}  
+        .m-slide{position:relative;width:100%;height:460px;overflow:hidden;}
+        .m-slide img{width:1652px;position:absolute;left:50%;margin-left:-826px;}        
+        .m-slide ol,.m-slide li{position:absolute;top:0;left:0;width:100%;height:100%;z-index:20;}
+        .m-slide li{opacity:0;-webkit-transition:0.5s ease-out;-moz-transition:0.5s ease-out;-ms-transition:0.5s ease-out;transition:0.5s ease-out;-webkit-transition-property:opacity,left,top;-moz-transition-property:opacity,left,top;-ms-transition-property:opacity,left,top;transition-property:opacity,left,top;}
+        .m-slide li.z-crt{z-index:21;opacity:1;}
 
+        /* 轮播图指示控制器 */
+        .u-pointer{position:absolute;bottom:10px;left:0;right:0;z-index:50;text-align:center;line-height:0;}
+        .u-pointer i{display:inline-block;width:10px;height:10px;margin:0 0 0 5px;border-radius:50%;box-shadow:inset 0 1px 0 rgba(0,0,0,0.5);cursor:pointer;background:#FFF;}
+        .u-pointer i:first-child{margin-left:0;}
+        .u-pointer i:hover{background:#FFF;}
+        .u-pointer i.z-crt{background:#333;}
 
          /*顶栏2*/
         /* 顶栏2-左侧Logo区 */
@@ -135,9 +146,9 @@
         .m-body .m-hotlist .info:before{content:'';position:absolute;top:2px;left:0;width:11px;height:11px;background:url(icon.png) no-repeat 0 0;}
 
         /*视频介绍弹窗*/
-        .g-video {position:absolute;width:950px;height:676px;top:-156px;left:50%;transform: translateX(-50%);background-color:white;z-index:999;display:none;}
-        .g-video p.title {font:18px/28px "微软雅黑"; color:#444;margin:30px 30px 0;} 
-        .g-video video{margin-left:30px;} 
+        .g-video {position:absolute;width:950px;height:676px;top:-156px;left:50%;margin-left:-475px;background-color:white;z-index:999;display:none;}
+        .g-video p.title {font:18px/28px "微软雅黑"; color:#444;margin: 30px 30px 22px;} 
+        .g-video .video{margin-left:30px;} 
         .g-video .close{position:absolute;top:13px;right:12px; width:10px; height:10px; background:url("icon.png") 0 -20px no-repeat;}
         .g-video .close:hover{cursor:pointer;} 
 

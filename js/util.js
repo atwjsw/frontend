@@ -29,6 +29,25 @@
  //         return e.currentStyle };
  // }
 
+ function getTarget(evt){
+     evt = evt || window.event; // get window.event if argument is falsy (in IE)
+
+     // get srcElement if target is falsy (IE)
+     var targetElement = evt.target || evt.srcElement;
+
+     //return id of <li> element when hovering over <li> or <a>
+     if (targetElement.nodeName.toLowerCase() == 'li'){
+      return targetElement;
+     }
+     else if (targetElement.parentNode.nodeName.toLowerCase() == 'li'){
+
+        return targetElement.parentNode;
+     }
+     else{
+        return targetElement;
+     }
+}
+
  getStyle = function (el, prop) {
     if (window.getComputedStyle) {
         return window.getComputedStyle(el).getPropertyValue(prop);

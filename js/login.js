@@ -1,50 +1,7 @@
-//AJAX请求操作
-/*
-function get(url, options, callback) {
-    var xhr = createCORSRequest("get", url);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-                callback(xhr.responseText);
-            } else {
-                console.log('Request was unsuccessful: ' + xhr.status);
-                callback(2);
-            }
-        }
-    }
-    var URL = url + "?" + serialize(options);
-    // alert(URL);
-    xhr.open('get', URL, true);
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.contentType='application/x-www-form-urlencoded';
-    xhr.send(null);
-}
-
-function serialize(data) {
-    if (!data) {
-        return '';
-    }
-    var pairs = [];
-    for (var name in data) {
-        if (!data.hasOwnProperty(name)) {
-            continue;
-        }
-        if (typeof data[name] === 'function') {
-            continue;
-        }
-        var value = data[name].toString();
-        name = encodeURIComponent(name);
-        value = encodeURIComponent(value);
-        pairs.push(name + '=' + value);
-    }
-    return pairs.join('&');
-}
-*/
 function handleLogin(data) {
     if (data == 1) {
         // alert("loing suc " + data);
-        $('.m-form')[0].style.display = "none";
-        $('.mask')[0].style.display = "none";
+        hideLoginWindow();
         $('.g-top1 .attention')[0].style.display = "none";
         $('.g-top1 .attnDone')[0].style.display = "inline-block";
         setCookie("loginSuc", "true", 30);
@@ -55,6 +12,7 @@ function handleLogin(data) {
         // alert("login failure " + data);
         showMessage('j-err', '系统出错，请稍后再尝试。');
     }
+    disableSubmit(false);
 }
 
 //Cookie操作
@@ -99,7 +57,7 @@ if (getCookie('loginSuc') == "true") {
 }
 
 addEvent($('.g-top1 .attention')[0], "click", function() {
-    $('.m-form')[0].style.display = "block";
+    $('.m-form')[0].style.display = "block";    
     $('.mask')[0].style.display = "block";   
 });
 
@@ -111,10 +69,19 @@ addEvent($('.g-notice a.noremind')[0],"click", function() {
 
 // 关闭登录框
 addEvent($('.m-form .close')[0],"click", function() {
-    $('.m-form')[0].style.display = "none";
-    $('.mask')[0].style.display = "none";      
+     hideLoginWindow();    
 });
 
+function hideLoginWindow() {
+    form.style.display = "none";    
+    $('.mask')[0].style.display = "none";
+    nmsg.innerHTML="";
+    util.delClass(nmsg, 'j-err');
+    form.userName.value=""; 
+    form.password.value="";
+    util.delClass(form.userName, 'j-error');
+    util.delClass(form.password, 'j-error');    
+}
 
 
 //登录框交互
@@ -124,48 +91,63 @@ var form = document.forms.loginForm,
 function showMessage(clazz, msg) {
     if (!clazz) {
         nmsg.innerHTML = '';
-        nmsg.classList.remove('j-suc');
-        nmsg.classList.remove('j-err');
+        util.delClass(nmsg, 'j-suc');
+        util.delClass(nmsg, 'j-err');
+        // nmsg.classList.remove('j-suc');
+        // nmsg.classList.remove('j-err');
     } else {
         nmsg.innerHTML = msg;
-        nmsg.classList.add(clazz);
+        util.addClass(nmsg, clazz);
+        // nmsg.classList.add(clazz);
     }
 }
 
 function disableSubmit(disabled) {
     form.loginBtn.disabled = !!disabled;
     var method = !disabled ? 'remove' : 'add';
-    form.loginBtn.classList[method]('j-disabled');
+    if (method=="add") {
+    // form.loginBtn.classList[method]('j-disabled');
+        util.addClass(form.loginBtn, 'j-disabled');
+    } else {
+        util.delClass(form.loginBtn, 'j-disabled');
+    }
 }
 
 function invalidInput(node, msg) {
     // showMessage('j-err',msg);
-    node.classList.add('j-error');
-    node.focus();
+
+    util.addClass(node, 'j-error');
+    // node.classList.add('j-error');
+    // node.focus();
 }
 
 function clearInvalid(node) {
     showMessage();
-    node.classList.remove('j-error');
+    util.delClass(node, 'j-error');
+    // node.classList.remove('j-error');
 }
 
 addEvent(form.userName,
     'invalid',
     function(event) {
-        event.preventDefault();
+        // event.preventDefault();
+        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
         var input = form.userName;
         invalidInput(input, '请输入账号');
     }
 );
 
+
 addEvent(form.password,
     'invalid',
     function(event) {
-        event.preventDefault();
+        // event.preventDefault();
+        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
         var input = form.password;
         invalidInput(input, '请输入密码');
     }
 );
+
 
 addEvent(form,
     'input',
@@ -177,36 +159,66 @@ addEvent(form,
     }
 );
 
+//兼容IE8，9代码
+addEvent(form.userName,
+    'focus',
+    function(event) {
+       clearInvalid(form.userName);
+    }
+);
 
- // var options ={userName: md5("studyOnline"), password: md5("study.163.com")};
- // var url = 'http://study.163.com/webDev/login.htm';
- // var returnText = makeCorsRequest(url, options, "GET");
- //    alert('Response from CORS request to ' + url + ': ' + returnText);  
+addEvent(form.password,
+    'focus',
+    function(event) {
+         clearInvalid(form.password);
+    }
+);
 
 addEvent(form,
     'submit',
     function(event) {
-        event.preventDefault();
+        // event.preventDefault();
+        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+        // if (form.userName.value.replace(/^ +| +$/g,'')=='') {
+        if (form.userName.value =='') {
+            var input = form.userName;
+            invalidInput(input, '请输入账号'); 
+        };           
+        if (form.password.value =='') {
+            var input = form.password;
+            invalidInput(input, '请输入密码');           
+        };
+        if (form.userName.value ==''|| form.password.value ==''){
+            showMessage();
+            return false;
+        } 
         var responseText = makeCorsRequest("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, "GET", handleLogin);       
-    });
 
-
-   
+    });  
 
 
 //视频弹窗交互
-var video = $('.g-video video')[0];
+// var video = $('.g-video .video')[0];
+var video =  document.getElementById("video");
+
+var html = video.innerHTML;
 
 addEvent($('.m-introduction img')[0], "click", function() {
     $('.g-video')[0].style.display = "block";
     $('.mask')[0].style.display = "block";
-    // $('.g-video video')[0].style.display = "block";
-    $('.g-video')[0].appendChild(video);
+    // $('.g-video .video')[0].style.display = "block";    
+    $('.g-video .video')[0].appendChild(video);
 });
 
 addEvent($('.g-video .close')[0], "click", function() {
-    $('.g-video')[0].removeChild(video);
+    // $('.g-video')[0].removeChild(video);    
     // $('.g-video video')[0].style.display = "none";
+    // $('.g-video .video')[0].pause();
+    // $('.g-video .video')[0].stop();
+    // $('span.video')[0].parentElement.removeNode($('span.video')[0]);
+    if(video.pause) {
+        video.pause();
+    }
     $('.g-video')[0].style.display = "none";
     $('.mask')[0].style.display = "none";   
 });
