@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="//api.html5media.info/1.1.8/html5media.min.js"></script>
+   <!--  <script src="//api.html5media.info/1.1.8/html5media.min.js"></script> -->
     <meta charset="utf-8">
     <title>微专业前端开发作业</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="网易前端开发工程师微专业作业">
-    
- 
+    <meta name="description" content="网易前端开发工程师微专业作业"> 
 </head>
 <body>
     <!-- 提醒通知条 -->
@@ -21,8 +19,6 @@
         </div>      
     </div>
     <!-- /提醒通知条 -->
-
-
 
     <!-- 顶栏1 -->
     <div class="g-top1">
@@ -133,7 +129,8 @@
             <p class="title">请观看下面的视频</p>
             <div class="close"></div>       
            
-            <video id="video" class="video" src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" poster="imgs/videol.jpg" width="889"  height="538" controls preload>               
+            <video id="video" class="video" src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" poster="imgs/videol.jpg" width="889"  height="538" controls preload>
+                        <h3>您需要HTML5兼容的浏览器观看本视频。</h3>               
             </video>
         </div>   
         <!-- /视频弹窗 -->
@@ -240,7 +237,7 @@
         {list courselist as track}
           <li>  
                 <div class="normal">
-                    <a href=""><img src="${track.middlePhotoUrl}" width="225px" height="124px" alt="课程图片"></a>
+                    <img src="${track.middlePhotoUrl}" width="225px" height="124px" alt="课程图片">
                     <p class="title">${track.name}</p> 
                     <p class="author">${track.provider}</p>
                     <p class="fans">${track.learnerCount}</p>
@@ -248,7 +245,7 @@
                 </div>
                 <div class="hover">
                     <div class="upper">
-                    <a href=""><img src="${track.bigPhotoUrl}" width="225px" height="124px" alt="课程图片"></a>
+                    <img src="${track.bigPhotoUrl}" width="225px" height="124px" alt="课程图片">
                         <div class="txt">
                             <p class="title">${track.name}</p>                            
                             <p class="info">${track.learnerCount}人在学</p>
@@ -285,23 +282,46 @@
         });
     });
 
-    var _ctrls = _slides[0].getElementsByTagName('i');
-    var i=0;
-    // 两秒后模拟点击
-    setInterval(function() {
-        // IE
-        if(document.all) {
-            _ctrls[i].click();               
-        } else { // 其它浏览器    
-            var e = document.createEvent("MouseEvents");
-            e.initEvent("click", true, true);
-            _ctrls[i].dispatchEvent(e);
-        };
-        i++;
-        if (i>=_ctrls.length) {
-            i=0;
-        };
-    }, 5000);
+//点击Controls触发换图
+var i=0;
+function clickControl () {
+     var _ctrls = _slides[0].getElementsByTagName('i');
+     // 兼容IE
+    if(document.all) {
+         _ctrls[i].click();               
+    } else { // 其它浏览器    
+        var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+        _ctrls[i].dispatchEvent(e);
+    };
+    i++;
+    if (i>=_ctrls.length) {
+        i=0;
+    };
+};
+
+   
+    // 五秒点击切换
+    var intervalId = setInterval(clickControl, 5000);
+
+    //鼠标悬停某张图片，则暂停切换；
+    var imgs = $('.m-slide img');
+    imgs.forEach(function(img, index) {
+      addEvent(img,"mouseenter", function(){
+        // alert("mouseover");
+          clearInterval(intervalId);
+       })
+      
+    });
+
+    //鼠标离开后，恢复切换；
+    imgs.forEach(function(img, index) {  
+       addEvent(img,"mouseleave", function(){
+            // alert("mouseout");
+           intervalId=setInterval(clickControl,5000)
+       })
+    });
+
 
     function hasClass(_object,_clsname){
         var _clsname = _clsname.replace(".","");
@@ -442,37 +462,29 @@
   
 
     //课程列表浮层交互
-       // window.addEventListener("load", function() {  
-         
-      function addMouseoverHandler(nodes) { 
+    function addMouseoverHandler(nodes) { 
          function helper(i) {   
-           return  function() {
-                // setTimeout(function(){
-                    $('.m-list div.hover')[i].style.display="block"} 
-                    // ,500);             
-                // }// $('.m-list div.hover')[i].style.zIndex="100"; 
-           }        
-       
-
+           return  function() {               
+                     util.addClass($('.m-list div.hover')[i],"z-crt");  
+                } 
+            } 
         for (var i=0;i<nodes.length;i++) {
-            // alert(i);
             addEvent(nodes[i],"mouseenter", helper(i))
         }
     }
 
     function addMouseoutHandler(nodes) {
         function helper(i) {   
-           return  function() {            
-                    $('.m-list div.hover')[i].style.display="none"
+           return  function() {                    
+                    util.delClass($('.m-list div.hover')[i],"z-crt"); 
                 }          
            }  
         for (var i=0;i<nodes.length;i++) {
-            addEvent(nodes[i], "mouseleave", helper(i))
+            addEvent(nodes[i], "mouseleave", helper(i));
         }
     }
            
     // 热门课程列表
-
     addEvent(window, "load", function() {
       makeCorsRequest("http://study.163.com/webDev/hotcouresByCategory.htm", {},  "GET", processHotlist);  
       makeCorsRequest("http://study.163.com/webDev/couresByCategory.htm", {pageNo:1, psize:psize, type:10 },  "GET" ,processCourselist); 

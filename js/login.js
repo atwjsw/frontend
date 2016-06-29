@@ -206,8 +206,10 @@ var html = video.innerHTML;
 addEvent($('.m-introduction img')[0], "click", function() {
     $('.g-video')[0].style.display = "block";
     $('.mask')[0].style.display = "block";
-    // $('.g-video .video')[0].style.display = "block";    
-    $('.g-video .video')[0].appendChild(video);
+    // $('.g-video .video')[0].style.display = "block";
+    // if (video) {   
+    //     $('.g-video .video')[0].appendChild(video);
+    // }
 });
 
 addEvent($('.g-video .close')[0], "click", function() {
