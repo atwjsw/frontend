@@ -81,7 +81,6 @@ function removeCookie(name) {
     setCookie(name, 1, -1);
 }
 
-
 //0.3 以下为Utility类通用函数
 //------------------------------------------------------------------------------------------
 //选择器，兼容IE8/9
@@ -154,21 +153,21 @@ var util = (function() {
 
 //1.1 关闭顶部通知条 - 通过Cookie实现不再提醒
 //-----------------------------------------------------------------------------------
-if (getCookie("reminder") == "false") {
+if (getCookie("reminder")) {
     $('.g-notice')[0].style.display = "none";
 }
 
-//点击取消不再提醒按钮，设置Cookie，关闭通知条
+//点击不再提醒按钮，设置Cookie，关闭通知条
 addEvent($('.g-notice a.noremind')[0], "click", function() {
-    setCookie("reminder", "false", 30);
+    setCookie("reminder", "true", 30);
     $('.g-notice')[0].style.display = "none";
     return false;
 });
 
 //1.2 关注“网易教育产品部”/登录
 //------------------------------------------------------------------------------------
-//首先判断登录的cookie是否已设置（loginSuc），如果已设置登录Cookie,显示不可点的“已关注”状态
-if (getCookie('loginSuc') == "true") {
+//判断关注的cookie是否已设置（followSuc），如果已设置登录Cookie,显示不可点的“已关注”状态
+if (getCookie('followSuc')) {
     $('.g-top1 .attention')[0].style.display = "none";
     $('.g-top1 .attnDone')[0].style.display = "inline-block";
     //如果未设置登录cookie，则显示关注按钮
@@ -176,10 +175,14 @@ if (getCookie('loginSuc') == "true") {
     $('.g-top1 .attention')[0].style.display = "inline-block";
 }
 
-//点击关注按钮，弹出登录框
+//点击关注按钮，如果未设置登录cookie(loginSuc)，则弹出登录框,否则直接调用关注API，设置登录cookie。
 addEvent($('.g-top1 .attention')[0], "click", function() {
-    $('.m-form')[0].style.display = "block";
-    $('.mask')[0].style.display = "block";
+    if (!getCookie('loginSuc')) {
+        $('.g-login')[0].style.display = "block";
+        $('.mask')[0].style.display = "block";
+    } else {
+       makeCorsRequest("http://study.163.com/webDev/attention.htm", {}, "GET", handleAttention);
+    }
 });
 
 //登录框交互
@@ -270,16 +273,13 @@ addEvent(form,
         makeCorsRequest("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, "GET", handleLogin);
     });
 
-
-// 成功后设置登录cookie 登录成功后， 调用关注API， 并设置关注成功的cookie（ followSuc） 
+// 成功后设置登录cookie 登录成功后， 调用关注API 
 // 登录后“ 关注” 按钮变成不可点的“ 已关注” 状态。 
 function handleLogin(data) {
     if (data == 1) {
-        hideLoginWindow();
-        $('.g-top1 .attention')[0].style.display = "none";
-        $('.g-top1 .attnDone')[0].style.display = "inline-block";
-        setCookie("loginSuc", "true", 30);
-        makeCorsRequest("http://study.163.com/webDev/attention.htm", {}, "GET", handleAttention);
+        hideLoginWindow();        
+        setCookie("loginSuc", "true", 30);   
+        makeCorsRequest("http://study.163.com/webDev/attention.htm", {}, "GET", handleAttention);     
     } else if (data == 0) {
         showMessage('j-err', '登录错误，请重新尝试。');
     } else {
@@ -291,6 +291,8 @@ function handleLogin(data) {
 function handleAttention(data) {
     if (data == 1) {
         setCookie("followSuc", "true", 30);
+        $('.g-top1 .attention')[0].style.display = "none";
+        $('.g-top1 .attnDone')[0].style.display = "inline-block";
     }
 }
 
@@ -298,18 +300,18 @@ function handleAttention(data) {
 addEvent($('.g-top1 .attnDone a')[0], "click", function() {
     $('.g-top1 .attention')[0].style.display = "inline-block";
     $('.g-top1 .attnDone')[0].style.display = "none";
-    removeCookie("loginSuc");
+    removeCookie("followSuc");
     return false;
 });
 
 // 点击登录框关闭按钮
-addEvent($('.m-form .close')[0], "click", function() {
+addEvent($('.g-login .close')[0], "click", function() {
     hideLoginWindow();
 });
 
 //关闭登录框时清除输入内容和错误消息
 function hideLoginWindow() {
-    form.style.display = "none";
+    $('.g-login')[0].style.display = "none";
     $('.mask')[0].style.display = "none";
     nmsg.innerHTML = "";
     util.delClass(nmsg, 'j-err');

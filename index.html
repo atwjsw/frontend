@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>    
+
+<head>
     <meta charset="utf-8">
     <title>微专业前端开发作业</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">  
     <meta name="description" content="网易前端开发工程师微专业作业">
+    <script src='js/md5.js'></script>
+    <script src='js/trimpath.js'></script>
 </head>
+
 <body>
     <!-- 提醒通知条 -->
     <div class="g-notice">
@@ -27,14 +30,12 @@
             <p class="attention"><em>+</em> 关注</p>
             <div class="attnDone"><span class="tick"></span><span> 已关注 </span><span class="divider2">|</span> <a>取消</a></div>
             <span class="fans">粉丝 45</span>
-            <div class="m-navbar1">
-                <ul>
-                    <li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
-                    <li><a href="http://study.163.com/" target="_blank">云课堂</a></li>
-                    <li><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
-                    <li class="search"></li>
-                </ul>
-            </div>
+            <ul class="m-navbar1">
+                <li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
+                <li><a href="http://study.163.com/" target="_blank">云课堂</a></li>
+                <li><a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
+                <li class="search"></li>
+            </ul>
         </div>
     </div>
     <!-- /顶栏1  -->
@@ -93,7 +94,7 @@
     </div>
     <!-- /顶栏2 -->
     <!-- 工作环境图片区 -->
-    <div class="workenv">
+    <div class="g-workenv">
         <img src="imgs/workenv.jpg">
     </div>
     <!-- /工作环境图片区 -->
@@ -151,7 +152,7 @@
     </div>
     <!-- /主内容区 -->
     <!-- 底栏 -->
-    <div class="m-bottom">
+    <div class="g-bottom">
         <div class="txtarea">
             <div class="area1">
                 <div class="edu">EDU</div>
@@ -249,8 +250,7 @@
         </ul>
     </script>
     <!-- /热门课程列表 -->
-    <script src='js/md5.js'></script>
-    <script src='js/trimpath.js'></script>
     <script src='js/index.js'></script>
 </body>
+
 </html>
