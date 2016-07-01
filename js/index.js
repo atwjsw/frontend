@@ -81,7 +81,7 @@ function removeCookie(name) {
     setCookie(name, 1, -1);
 }
 
-//0.3 以下为Utility类通用函数
+//0.3 Utility类通用方法函数
 //------------------------------------------------------------------------------------------
 //选择器，兼容IE8/9
 var $ = function(selector) {
@@ -153,6 +153,7 @@ var util = (function() {
 
 //1.1 关闭顶部通知条 - 通过Cookie实现不再提醒
 //-----------------------------------------------------------------------------------
+//判断Cookie设置
 if (getCookie("reminder")) {
     $('.g-notice')[0].style.display = "none";
 }
@@ -181,7 +182,7 @@ addEvent($('.g-top1 .attention')[0], "click", function() {
         $('.g-login')[0].style.display = "block";
         $('.mask')[0].style.display = "block";
     } else {
-       makeCorsRequest("http://study.163.com/webDev/attention.htm", {}, "GET", handleAttention);
+        makeCorsRequest("http://study.163.com/webDev/attention.htm", {}, "GET", handleAttention);
     }
 });
 
@@ -210,10 +211,8 @@ function clearInvalid(node) {
 addEvent(form.userName,
     'invalid',
     function(event) {
-        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-        // var input = form.userName;
-        util.addClass(form.userName, 'j-error');
-        // invalidInput(input, '请输入账号');
+        event.preventDefault ? event.preventDefault() : (event.returnValue = false);    
+        util.addClass(form.userName, 'j-error');    
     }
 );
 
@@ -221,10 +220,8 @@ addEvent(form.userName,
 addEvent(form.password,
     'invalid',
     function(event) {
-        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-        // var input = form.password;
-        util.addClass(form.password, 'j-error');
-        // invalidInput(input, '请输入密码');
+        event.preventDefault ? event.preventDefault() : (event.returnValue = false);      
+        util.addClass(form.password, 'j-error');      
     }
 );
 
@@ -233,9 +230,7 @@ addEvent(form,
     'input',
     function(event) {
         // 还原错误状态
-        clearInvalid(event.target);
-        // 还原登录按钮状态
-        // disableSubmit(false);
+        clearInvalid(event.target);       
     }
 );
 
@@ -270,6 +265,7 @@ addEvent(form,
             showMessage();
             return false;
         }
+        //发起AJAX COR登录请求
         makeCorsRequest("http://study.163.com/webDev/login.htm", { userName: md5(form.userName.value), password: md5(form.password.value) }, "GET", handleLogin);
     });
 
@@ -277,9 +273,9 @@ addEvent(form,
 // 登录后“ 关注” 按钮变成不可点的“ 已关注” 状态。 
 function handleLogin(data) {
     if (data == 1) {
-        hideLoginWindow();        
-        setCookie("loginSuc", "true", 30);   
-        makeCorsRequest("http://study.163.com/webDev/attention.htm", {}, "GET", handleAttention);     
+        hideLoginWindow();
+        setCookie("loginSuc", "true", 30);
+        makeCorsRequest("http://study.163.com/webDev/attention.htm", {}, "GET", handleAttention);
     } else if (data == 0) {
         showMessage('j-err', '登录错误，请重新尝试。');
     } else {
@@ -327,6 +323,7 @@ function hideLoginWindow() {
     each(_slides, function(_slide, i) {
         var _ctrls = _slide.getElementsByTagName('i');
         var _lists = _slide.getElementsByTagName('li');
+
         each(_ctrls, function(_ctrl, i) {
             _ctrl.onclick = function() {
                 each(_lists, function(_list, i) {
@@ -337,30 +334,32 @@ function hideLoginWindow() {
                 });
                 addClass(_lists[i], "z-crt");
                 addClass(_ctrls[i], "z-crt");
+                //手动点击后设置当前页面，循环播放从当前页面开始   
+                ci = i;
             }
         });
     });
 
-    //模拟点击Controls触发切换
-    var i = 0;
+    //模拟点击手动循环点击切换Controls
+    var _ctrls = _slides[0].getElementsByTagName('i');
 
     function clickControl() {
-        var _ctrls = _slides[0].getElementsByTagName('i');
         // 兼容IE
         if (document.all) {
-            _ctrls[i].click();
+            _ctrls[ci].click();
         } else { // 其它浏览器    
             var e = document.createEvent("MouseEvents");
             e.initEvent("click", true, true);
-            _ctrls[i].dispatchEvent(e);
+            _ctrls[ci].dispatchEvent(e);
         };
-        i++;
-        if (i >= _ctrls.length) {
-            i = 0;
+        ci++;
+        if (ci >= _ctrls.length) {
+            ci = 0;
         };
     };
 
-    // 每隔五秒点击切换
+    //设置轮播初始点击面为1；每隔五秒点击切换 
+    var ci = 1;
     var intervalId = setInterval(clickControl, 5000);
 
     //鼠标悬停某张图片，则暂停切换；
@@ -370,10 +369,9 @@ function hideLoginWindow() {
             // alert("mouseover");
             clearInterval(intervalId);
         })
-
     });
 
-    //鼠标离开后，恢复切换；
+    // 鼠标离开后，恢复切换；
     imgs.forEach(function(img, index) {
         addEvent(img, "mouseleave", function() {
             // alert("mouseout");
@@ -464,28 +462,28 @@ function render(parent, list, template) {
 }
 
 // 点击“产品设计”tab，实现下方课程内容的更换
-addEvent($('.m-tab .product')[0], "click", function(event) {
+var productTab = $('.m-tab .product')[0];
+var programTab = $('.m-tab .program')[0];
+addEvent(productTab, "click", function(event) {
     event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     type = 10;
-    makeCorsRequest(courseURL, { pageNo: 1, psize: psize, type: type }, "GET", processCourselist);
-    $('.m-tab .program')[0].style.backgroundColor = "white";
-    $('.m-tab .program a')[0].style.color = "#666";
-    $('.m-tab .product')[0].style.backgroundColor = "#39a030";
-    $('.m-tab .product a')[0].style.color = "white";
+    makeCorsRequest(courseURL, { pageNo: 1, psize: psize, type: type }, "GET", processCourselist);   
+    util.delClass(programTab, "z-crt");
+    util.addClass(productTab, "z-crt");
+    //切换翻页器状态
     util.delClass($('.m-page .z-crt')[0], "z-crt");
     util.addClass($('.m-page .pgi')[0], "z-crt");
     return false;
 });
 
 // 点击“编程语言”tab，实现下方课程内容的更换
-addEvent($('.m-tab .program')[0], "click", function(event) {
+addEvent(programTab, "click", function(event) {
     event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     type = 20;
-    makeCorsRequest(courseURL, { pageNo: 1, psize: psize, type: type }, "GET", processCourselist);
-    $('.m-tab .program')[0].style.backgroundColor = "#39a030";
-    $('.m-tab .program a')[0].style.color = "white";
-    $('.m-tab .product')[0].style.backgroundColor = "white";
-    $('.m-tab .product a')[0].style.color = "#666";
+    makeCorsRequest(courseURL, { pageNo: 1, psize: psize, type: type }, "GET", processCourselist);    
+    util.delClass(productTab, "z-crt");
+    util.addClass(programTab, "z-crt");
+    //切换翻页器状态
     util.delClass($('.m-page .z-crt')[0], "z-crt");
     util.addClass($('.m-page .pgi')[0], "z-crt");
     return false;
@@ -497,6 +495,7 @@ addEvent($('.m-tab .program')[0], "click", function(event) {
 function addMouseenterHandler(nodes) {
     function helper(i) {
         return function() {
+            $('.m-list .normal p.title')[i].style.color = "#39a030";
             util.addClass($('.m-list div.hover')[i], "z-crt");
         }
     }
@@ -509,6 +508,7 @@ function addMouseoutHandler(nodes) {
     function helper(i) {
         return function() {
             util.delClass($('.m-list div.hover')[i], "z-crt");
+            $('.m-list .normal p.title')[i].style.color = "#333";
         }
     }
     for (var i = 0; i < nodes.length; i++) {
